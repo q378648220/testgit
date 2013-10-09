@@ -1,0 +1,287 @@
+Title
+========================================================
+### Project Euler 1
+#   找到1000以下，所有能被3或5整除的数，将它们相加
+x <- 1:999
+sum(x[x %% 3 == 0 | x %% 5 == 0 ])
+```{r}
+x<- 1:999
+sum(x[x %% 3 == 0 | x %% 5 == 0 ])
+```
+### Project Euler 2
+# 找到4000000以下的斐波纳契数列
+# 将其中的偶数进行求和
+
+
+```{r}
+i <- 2
+x <- 1:2
+while (x[i] < 4e6) {
+  x[i+1] <- x[i-1] + x[i]
+  i <- i + 1
+}
+x <- x[-i]
+sum(x[x %% 2 == 0])
+```
+# Project Euler 3
+# 找到600851475143这个数的最大质因子
+# 先建立一个函数以判断某个数是否为质数
+```{r}
+findprime  <- function(x) {
+    if (x %in% c(2,3,5,7)) return(TRUE)
+    if (x%%2 == 0 | x==1) return(FALSE)
+    xsqrt <- round(sqrt(x))
+    xseq <- seq(from=3,to=xsqrt,by=2)
+    if (all(x %% xseq !=0)) return(TRUE)
+    else return(FALSE)
+}
+# 列出1到100的质数，看函数对不对
+x = 1:100
+x[sapply(x,findprime)]
+ 
+# 寻找最大的质因子
+n <- 600851475143
+for (i in seq(from=3, to=round(sqrt(n)), by=2)) {
+  if (findprime(i) & n %% i == 0) {
+      n <- n / i
+      prime.factor <- i       
+      if (i >= n)
+        break
+    }
+}
+print(prime.factor)
+```
+### Project Euler 4
+# 在两个三位数字的乘积中，找出最大的回文数
+```{r}
+reverse <- function(n) {
+    reversed <- 0
+    while (n > 0) {
+        reversed <- 10 * reversed + n %% 10
+        n <- n%/%10
+    }
+    return(reversed)
+}
+ 
+# 从大到小搜索回文数
+x <- y <- 999:100
+data <- expand.grid(x=x,y=y)
+data$prod <- data$x * data$y
+data <- data[order(data$prod,decreasing=T),]
+head(data)
+
+value <- data$prod
+for (i in 1:length(value)) {
+    isequal <- (value[i] == reverse(value[i]))
+    if (isequal) {
+        print(data[i,])
+        break
+    }
+}
+```
+
+### Euler 6  
+```{r}
+x <- 1:100
+sum(x)^2 - sum(x^2)
+```
+
+### Euler 7 
+```{r}
+findprime  <- function(x) {
+    if (x %in% c(2,3,5,7)) return(TRUE)
+    if (x%%2 == 0 | x==1) return(FALSE)
+    xsqrt <- round(sqrt(x))
+    xseq <- seq(from=3,to=xsqrt,by=2)
+    if (all(x %% xseq !=0)) return(TRUE)
+    else return(FALSE)
+}
+n <- 0
+i <- 1
+m <- rep(0,10001)
+while (n <10001) {
+    if (findprime(i)) {
+        n <- n +1 
+        m[n] <- i}
+    i <- i + 1
+}
+m[10001]
+```
+
+### Euler 8 
+
+```{r}
+web <- 'http://projecteuler.net/problem=8'
+# 用readLines函数来抓取网页
+raw <- readLines(web)
+raw <- raw[54:72]
+# 删除多余字符串
+data <- gsub('<br />','',raw)
+# 粘合成一个字符串
+num <- paste(data,collapse='')
+# 分割后转为数值向量
+temp <- as.numeric(unlist(strsplit(num,'')))
+ 
+p <- numeric()
+for ( i in 1:(950-4)) {
+    p[i] <- prod(temp[i:(i+4)])
+}
+max(p)
+```
+
+# euler 9 -----------------------------------------------------------------
+
+
+# 9 Find the only Pythagorean triplet, {a, b, c}, for which a + b + c = 1000.
+```{r}
+for (a in 1:500) {
+    for (b in 1:500) {
+        if (2*a*b-2000*(a+b)+1000^2==0) {
+        print(c(a,b,1000-a-b))
+        print(a*b*(1000-a-b))
+        break
+        }
+    }
+}
+```
+### 10 Find the sum of all the primes below two million.
+```{r}
+# 使用筛法来得到质数
+PrimeSieve <- function(n) {
+    if (n <= 1) {
+        primes <- numeric(0)
+    }
+    if (n == 2 | n == 3) {
+        primes <- 2:n
+    }
+    else {
+        numbers <- 2:n
+        sieve <- rep(TRUE, times = n - 1)  # let all flags to be TRUE
+        cross.limit <- floor(sqrt(n))
+        count <- 1   
+        p <- numbers[sieve][count]  # let p be the first sieve number
+        while (p <= cross.limit) {
+            sieve[p * (2:floor(n / p)) - 1] <- FALSE
+            count <- count + 1
+            p <- numbers[sieve][count]
+        }   
+        primes <- numbers[sieve]
+    }
+    return(primes)
+}
+result <- sum(as.numeric(PrimeSieve(2e6)))
+cat("The result is:", result, "\n")
+```
+
+### euler 11
+```{r}
+raw <- scan('clipboard')
+data <- matrix(raw,ncol=20,byrow=T)
+final <- matrix(ncol=4)
+for (x in 1:17) {
+    for ( y in 1:17) {
+        submatrix <- data[x:(x+3),y:(y+3)]
+        final <- rbind(final,
+                       submatrix,
+                       t(submatrix),
+                       diag(submatrix),
+                       diag(apply(submatrix,1,rev)))
+    }
+}
+max(apply(final,1,prod),na.rm=T)
+```
+
+### euler 12 
+
+```{r}
+x = 1:20
+triangle = x*(x+1)/2
+
+factorf <- function(x) {
+  m <- 0
+  for (n in 1:round(x/2)) {
+    if (x%%n==0) m <- m + 1
+  }
+  return(m)
+}
+
+x <- 7
+y <- x*(x+1)/2
+m <- factorf(y)
+while (m <= 50) {
+  y <- x*(x+1)/2
+  m <- factorf(y)
+  x <- x + 1
+}
+print(y)
+
+
+# helper funtion for factorization       
+PrimeFactor <- function(x, prime = prime) {
+  m <- length(prime)
+  fac.count <- numeric(m)
+  names(fac.count) <- prime
+  # actually, a primality check could insert here
+  for (i in 1:m) {
+    prime.num <- prime[i]
+    while (x %% prime.num == 0) {
+      fac.count[i] <- fac.count[i] + 1
+      x = x / prime.num
+    }  
+    while (x == 1) break
+  }
+  return(fac.count)
+}
+
+prime <- c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 
+           67, 71, 73, 79, 83, 89, 97)
+
+# generate triangle numbers and count prime factors
+i <- 1
+div.count <- 0
+while (div.count <= 500) {
+  triangle <- i * (i + 1) / 2
+  fac <- PrimeFactor(triangle, prime)
+  div.count <- prod(fac + 1) 
+  i <- i + 1
+}
+cat("The result is", i-1, "th triangle number:", triangle, "\n")
+```
+
+### euler 13 
+```{r}
+data <- scan("clipboard")
+data <- as.numeric(data)
+sumx <- sum(data)
+y <- numeric()
+num <- as.numeric(paste('1e',51:42,sep=''))
+for ( i in num) {
+    y <- c(y,sumx %/% i)
+    sumx <- sumx %% i
+}
+print(y)
+```
+### euler 14 
+```{r}
+func <- function(x) {
+  n = 1
+  raw <- x
+  while (x > 1) {
+    x <- ifelse(x%%2==0,x/2,3*x+1)
+    n = n + 1
+  }
+  return(c(raw,n))
+}
+
+
+# 用多核心来计算
+library(snow)
+system.time({
+x <- 1:1e6
+cl <- makeCluster(2,type='SOCK')
+results <- clusterApply(cl,x,fun=func)
+res.df <- do.call('rbind',results)
+})
+stopCluster(cl)
+res.df[which.max(res.df[,2]),1]
+```
