@@ -62,7 +62,8 @@ CJK 模板文件
 \end_layout
 
 \begin_layout Standard
-稳健统计学（Robust Statistics）的
+大多数传统的统计方法是在对研究的总体的分布形式和其他特征做出一些假设的情况下的，而实际总体不满足假设条件，或观察数据中包含不能代表总体特性的异常点（Outlie
+rs）时，传统的统计方法可能就会出现较大误差。由于仪器故障、操作失误等原因，异常点是很容易出现的。因此，偏离假设是常见的现象。
 \end_layout
 
 \begin_layout Section
@@ -74,7 +75,90 @@ L估计
 \end_layout
 
 \begin_layout Standard
-L估计（Linear Combination of Order Statistics）是用顺序统计量的现行组合来估计位置的一类估计量。如果讲
+L估计（Linear Combination of Order Statistics）是用顺序统计量的现行组合来估计位置的一类估计量。
+\end_layout
+
+\begin_layout Standard
+如果将总体的一组观测值按从小到大的次序排列起来，即
+\begin_inset Formula $x_{1}\leqq x_{2}\leqq x_{3}\leqq...\leqq x_{n}$
+\end_inset
+
+，它们就成为了一组顺序统计量。
+\end_layout
+
+\begin_layout Standard
+算术平均值可以看作是系数为
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+的顺序统计量的线性组合，因而可以看作是L估计量的一种。但算术平均数很不稳定，所以又有学者提出了其他的各种统计量，给不同的顺序统计量以不同的系数，从而打到消弱异常
+点影响的目的。
+\end_layout
+
+\begin_layout Subsubsection
+α修剪后均值(Linera Combination of Order Statistics)
+\end_layout
+
+\begin_layout Standard
+α修剪后均值(
+\begin_inset Formula $0\leqq\alpha<0.5$
+\end_inset
+
+)是这样一种线性组合：
+\begin_inset Formula \[
+T_{n}=\frac{1}{(1-2\alpha)n}\sum_{i=1}^{n}\alpha_{i}x_{i}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中
+\begin_inset Formula $\alpha_{i}=\begin{cases}
+1, & \text{当}[\alpha n]+1<i<n-[\alpha n]\\
+p, & \text{当i=}[\alpha n]+1\text{或}i=n-[\alpha n]\\
+0, & \text{当i<}[\alpha n]+1\text{或}i>n-[\alpha n]\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+上市中的[αn]表示αn的整数部分，
+\begin_inset Formula $p=1+[\alpha n]-\alpha n$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+α修剪后均值均值实际上是蒋数据的最大和最小的[αn]个数去掉后剩余部分的加权平均值。当
+\begin_inset Formula $[\alpha n]\neq\alpha n$
+\end_inset
+
+时，剩余部分的最小和最大的各一个数的权为p，其余的权为1。当
+\begin_inset Formula $[\alpha n]=\alpha n$
+\end_inset
+
+时，剩余的所有输的权均为1.
+\end_layout
+
+\begin_layout Standard
+由
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+的公式可知，当α = 0时，
+\begin_inset Formula $T{}_{n}$
+\end_inset
+
+是算术平均值。当α趋近于0.5时，
+\begin_inset Formula $T{}_{n}$
+\end_inset
+
+是中位数。用中位数来估计位置比算术平均值文件的多。但另一方面，用中位数会损失数据缩提供的信息。因此，可以取α为0与0.5之间的适当数值，以在保证一定的稳健性的同时
+尽可能利用数据所提供的信息。
 \end_layout
 
 \begin_layout Subsection
