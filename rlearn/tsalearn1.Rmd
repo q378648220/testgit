@@ -4,6 +4,10 @@ Title
 This is how I learn TSA
 
 ```{r}
+a=c(1,2,3,4,5,100)
+library(MASS)
+huber(a)
+hubers(a)
 
 ```
 

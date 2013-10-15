@@ -28,7 +28,7 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
@@ -64,6 +64,10 @@ CJK 模板文件
 \begin_layout Standard
 大多数传统的统计方法是在对研究的总体的分布形式和其他特征做出一些假设的情况下的，而实际总体不满足假设条件，或观察数据中包含不能代表总体特性的异常点（Outlie
 rs）时，传统的统计方法可能就会出现较大误差。由于仪器故障、操作失误等原因，异常点是很容易出现的。因此，偏离假设是常见的现象。
+\end_layout
+
+\begin_layout Standard
+稳健统计方法根据某种规则对数据自动加权，从而是异常点的影响被不同程度地削弱。其特点是：少量异常点
 \end_layout
 
 \begin_layout Section
@@ -116,9 +120,9 @@ T_{n}=\frac{1}{(1-2\alpha)n}\sum_{i=1}^{n}\alpha_{i}x_{i}\]
 \begin_layout Standard
 其中
 \begin_inset Formula $\alpha_{i}=\begin{cases}
-1, & \text{当}[\alpha n]+1<i<n-[\alpha n]\\
-p, & \text{当i=}[\alpha n]+1\text{或}i=n-[\alpha n]\\
-0, & \text{当i<}[\alpha n]+1\text{或}i>n-[\alpha n]\end{cases}$
+1 & \text{当}[\alpha n]+1<i<n-[\alpha n]\\
+p & \text{当i=}[\alpha n]+1\text{或}i=n-[\alpha n]\\
+0 & \text{当i<}[\alpha n]+1\text{或}i>n-[\alpha n]\end{cases}$
 \end_inset
 
 
@@ -141,7 +145,7 @@ p, & \text{当i=}[\alpha n]+1\text{或}i=n-[\alpha n]\\
 \begin_inset Formula $[\alpha n]=\alpha n$
 \end_inset
 
-时，剩余的所有输的权均为1.
+时，剩余的所有数的权均为1.
 \end_layout
 
 \begin_layout Standard
@@ -149,32 +153,460 @@ p, & \text{当i=}[\alpha n]+1\text{或}i=n-[\alpha n]\\
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
-的公式可知，当α = 0时，
-\begin_inset Formula $T{}_{n}$
+的公式可知，当α=0时，
+\begin_inset Formula $T_{n}$
 \end_inset
 
 是算术平均值。当α趋近于0.5时，
-\begin_inset Formula $T{}_{n}$
+\begin_inset Formula $T_{n}$
 \end_inset
 
 是中位数。用中位数来估计位置比算术平均值文件的多。但另一方面，用中位数会损失数据缩提供的信息。因此，可以取α为0与0.5之间的适当数值，以在保证一定的稳健性的同时
 尽可能利用数据所提供的信息。
 \end_layout
 
-\begin_layout Subsection
-M估计
+\begin_layout Subsubsection
+跳跃估计(Skipped Estimates)
+\end_layout
+
+\begin_layout Standard
+按下式定义两点
+\begin_inset Formula $p_{1}$
+\end_inset
+
+和
+\begin_inset Formula $p_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+p_{1}=h_{1}-c(h_{2}-h_{1})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+p_{2}=h_{2}+c(h_{2}-h_{1})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+式中
+\begin_inset Formula $h_{1}<h_{2}$
+\end_inset
+
+为样本的两个四分位数，而c是控制稳健性的参数，通常取值1.0到2.0之间，单重跳跃估计法是先将小于
+\begin_inset Formula $p_{1}$
+\end_inset
+
+并大于
+\begin_inset Formula $p_{2}$
+\end_inset
+
+的数据“跳跃过去”，然后对剩余部分求稳健估计值。
+\end_layout
+
+\begin_layout Subsubsection
+α交瑟化均值(α-Winsorized Means)
+\end_layout
+
+\begin_layout Standard
+对一组数据进行交瑟化就是按下式用
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+代替
+\begin_inset Formula $x_{i}$
+\end_inset
+
+：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+x_{i}^{*}=\begin{cases}
+x_{i} & \text{当}T_{n}-c\leqq x_{i}\leqq T_{n}+c\\
+T_{n}-c & \text{当}x_{i}<T_{n}-c\\
+T_{n}+c & \text{当}x_{i}>T_{n}-c\end{cases}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+α交瑟化均值就是将一组数据中最小的[αn]个数用
+\begin_inset Formula $x_{[\alpha n]+1}$
+\end_inset
+
+来代替，最大的[αn]个数用
+\begin_inset Formula $x_{n-[\alpha n]}$
+\end_inset
+
+来代替，之后的算术平均值。
 \end_layout
 
 \begin_layout Subsection
-S估计
+M估计(Maximum Likelihood Estimates)
+\end_layout
+
+\begin_layout Standard
+位置的最小二乘估计是通过对误差平方和
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}r_{i}=\sum_{i=1}^{n}(x_{i}-T_{n})^{2}}$
+\end_inset
+
+取极小而求得。它是方程
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}r_{i}=0}}$
+\end_inset
+
+的解。
+\end_layout
+
+\begin_layout Standard
+M估计可以看作是对最小二乘估计的一种改善。它用一个函数
+\begin_inset Formula $\rho(x;t)$
+\end_inset
+
+来代替每个观测值与估计值t的残差平方和，并且通过对
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}\rho(x_{i};t)}$
+\end_inset
+
+取极小而得到的。对于函数
+\begin_inset Formula $\rho$
+\end_inset
+
+和样本
+\begin_inset Formula $x_{1},\text{·}\text{·}\text{·},x_{n}$
+\end_inset
+
+,M估计值
+\begin_inset Formula $T_{n}(x_{1},\text{·}\text{·}\text{·},x_{n})$
+\end_inset
+
+是使得目标函数
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\rho(x_{i};t)}}$
+\end_inset
+
+达到最小的t值。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho(x_{i})$
+\end_inset
+
+是
+\begin_inset Formula $x_{i}$
+\end_inset
+
+的函数，它随
+\begin_inset Formula $x_{i}$
+\end_inset
+
+值的增大而增大，通常取
+\begin_inset Formula $\rho(x_{i})=-lnf(x_{i})$
+\end_inset
+
+，其中
+\begin_inset Formula $f(x_{i})$
+\end_inset
+
+是
+\begin_inset Formula $x_{i}$
+\end_inset
+
+的分布密度函数。
+\begin_inset Formula $\rho(x_{i})$
+\end_inset
+
+对取极小就相当于对
+\begin_inset Formula $x_{i}$
+\end_inset
+
+的似然函数的对数
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}lnf(x_{i};t)}$
+\end_inset
+
+取极大。故M统计值被成为最大似然估计。若
+\begin_inset Formula $\rho(x;t)=x^{2}$
+\end_inset
+
+，M估计量等价于最小二乘估计量。若
+\begin_inset Formula $\rho(x;t)=\left|x\right|$
+\end_inset
+
+，M估计量等价于最小绝对偏差估计量。
+\end_layout
+
+\begin_layout Standard
+令
+\begin_inset Formula $\rho$
+\end_inset
+
+关于t的导数为：
+\begin_inset Formula $\psi(z_{i})=\rho'(z_{i};t)$
+\end_inset
+
+，则
+\begin_inset Formula $T_{n}$
+\end_inset
+
+是
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\psi(x_{i};t)}}=0$
+\end_inset
+
+的解。
+\end_layout
+
+\begin_layout Standard
+为了消除测量单位对估计的影响，类似于传统的将数据标准化的做法，在M估计中用
+\begin_inset Formula $z_{i}=\frac{x_{i}}{s}$
+\end_inset
+
+来代替
+\begin_inset Formula $r_{i}$
+\end_inset
+
+。这里s是待估尺度（参数）（scale）。尺度s的稳健估计是另一个重要的稳健统计学问题。一般s值取误差绝对值的中位数：
+\begin_inset Formula $s=median\{|r_{i}|\}$
+\end_inset
+
+。有时将该中位数除以0.6745作为s的估计值，以使在正态分布时s等于标准差。s也可以由
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\chi(z_{i})=0}}$
+\end_inset
+
+求出，其中
+\begin_inset Formula $\chi(z_{i})=z_{i}\psi(z_{i})-1$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+M估计的特性完全由
+\begin_inset Formula $\psi$
+\end_inset
+
+的形式所决定。可以证明，
+\begin_inset Formula $|\psi(z_{i})|$
+\end_inset
+
+的大小与增添一个
+\begin_inset Formula $x_{i}$
+\end_inset
+
+对
+\begin_inset Formula $T_{n}$
+\end_inset
+
+的影响——即所谓“影响函数”（Influence Function）的大小成正比。所以，要消弱极端数值对
+\begin_inset Formula $T_{n}$
+\end_inset
+
+的影响，则需要蒋极端部分的
+\begin_inset Formula $|\psi(z_{i})|$
+\end_inset
+
+值控制在一定的范围之内。下面是几种常见的M估计。
+\end_layout
+
+\begin_layout Standard
+尤伯(Huber)的第二提案
+\end_layout
+
+\begin_layout Standard
+其
+\begin_inset Formula $\psi$
+\end_inset
+
+的形式是
+\begin_inset Formula \[
+\psi(z_{i})=\begin{cases}
+z_{i} & \text{当}|z_{i}|<c\\
+c\text{·}sign(z_{i}) & \text{当}|z_{i}|>c\end{cases}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+式中的
+\begin_inset Formula $sign(z_{i})$
+\end_inset
+
+表示
+\begin_inset Formula $z_{i}$
+\end_inset
+
+的符号。c是一个控制稳健性的常数，通常取值在0.7到2.0之间。
+\end_layout
+
+\begin_layout Standard
+汉培尔（Hampel）的三参数估计。
+\end_layout
+
+\begin_layout Standard
+其
+\begin_inset Formula $\psi$
+\end_inset
+
+的形式是
+\begin_inset Formula \[
+\psi(z_{i})=\begin{cases}
+z_{i} & \text{当}|z_{i}|<a\\
+c\text{·}sign(z_{i}) & \text{当}a\leqq|z_{i}|<b\\
+\frac{c-z_{i}}{c-b}sign(z_{i}) & \text{当}b\leqq|z_{i}|<c\\
+0 & \text{当}|z_{i}|>c\end{cases}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+式中的
+\begin_inset Formula $sign(z_{i})$
+\end_inset
+
+表示
+\begin_inset Formula $z_{i}$
+\end_inset
+
+的符号。a、b、c是三个控制稳健性的常熟，
+\end_layout
+
+\begin_layout Standard
+安宙斯（Andrews）的正弦估计。
+\end_layout
+
+\begin_layout Standard
+其
+\begin_inset Formula $\psi$
+\end_inset
+
+的形式是
+\begin_inset Formula \[
+\psi(z_{i})=\begin{cases}
+sin(\frac{z_{i}}{c}) & \text{当}|z_{i}|<c\pi\\
+0 & \text{当}|z_{i}|>c\pi\end{cases}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+式中的
+\begin_inset Formula $sign(z_{i})$
+\end_inset
+
+表示
+\begin_inset Formula $z_{i}$
+\end_inset
+
+的符号。c是一个控制稳健性的常数，通常取值在1.5到2.5之间。
 \end_layout
 
 \begin_layout Subsection
-GM估计
+R估计(Rank Estimate)
 \end_layout
 
-\begin_layout Subsection
-LST估计
+\begin_layout Standard
+R估计值及秩估计值，室友双样本秩检验引申来的。首先用算术平均数或中位数等给出
+\begin_inset Formula $T_{n}$
+\end_inset
+
+的初始值，再由下式构成第二样本
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+Y=(y_{1},\text{·}\text{·}\text{·},y_{n})=(2T_{n}-x_{1},\text{·}\text{·}\text{·},2T_{n}-x_{n})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+可见Y是X的以
+\begin_inset Formula $T_{n}$
+\end_inset
+
+为中心的镜像。当X是对称分布且
+\begin_inset Formula $T_{n}$
+\end_inset
+
+是位置的最佳估计时，X与Y应当完全重合。将两样本混合后记
+\begin_inset Formula $x_{1},\text{·}\text{·}\text{·},x_{n}$
+\end_inset
+
+在混合样本中的序数为
+\begin_inset Formula $R_{1},\text{·}\text{·}\text{·},R_{n}$
+\end_inset
+
+，定义秩统计量为
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+S_{n,n}=\sum_{i=1}^{n}a(R_{i})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a(R_{i})$
+\end_inset
+
+被称为
+\begin_inset Formula $R_{i}$
+\end_inset
+
+的得分(Score)，其选择应当使当
+\begin_inset Formula $T_{n}$
+\end_inset
+
+是位置的最佳估计时，
+\begin_inset Formula $S_{n,n}$
+\end_inset
+
+的值为0。例如
+\begin_inset Formula $a(R_{i})=\frac{R_{i}}{2n+1}-\frac{1}{2}$
+\end_inset
+
+或
+\begin_inset Formula $a(R_{i})=\frac{R_{i}-\frac{1}{2}}{2n}-\frac{1}{2}$
+\end_inset
+
+均可满足这一要求。实际计算时，可以逐渐调节
+\begin_inset Formula $T_{n}$
+\end_inset
+
+的值，使
+\begin_inset Formula $S_{n,n}$
+\end_inset
+
+所对应的
+\begin_inset Formula $T_{n}$
+\end_inset
+
+即所求的R估计值。
+\end_layout
+
+\begin_layout Standard
+对明显不对称的分布形式，R估计量的效果并不好。
 \end_layout
 
 \end_body
