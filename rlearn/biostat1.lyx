@@ -1,0 +1,2044 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% please do NOT remove these lines!
+% set file encoding for WinEdt
+% !Mode:: "TeX:UTF-8"
+% set typesetting program for TeXworks
+% !TEX program = XeLaTeX
+
+\usepackage[CJKtextspaces,CJKnumber]{xeCJK}                                      
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKsansfont{SimHei}         
+\setCJKmonofont{NSimSun}  
+
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "LyTeX"
+\pdf_author "Jiangbing"
+\pdf_subject "latex"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=false"
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+用生存分析方法研究了美沙酮对戒毒所需时间的影响
+\end_layout
+
+\begin_layout Author
+蒋冰
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+学号：201322130002
+\end_layout
+
+\begin_layout Abstract
+本文主要根据生存分析中的方法，分析了238例美沙酮治疗海洛因成瘾者的戒毒数据，研究了美沙酮的剂量、治疗方法、是否有入狱激励对戒毒所需时间的影响规律。本文通过乘积
+极限法（PM法）建立海洛因成瘾者的戒瘾时间的生存率模型，然后用Cox比较危险率模型（PH模型）分析了治疗方式、入狱记录、美沙酮剂量对戒毒所需时间的影响,并通过c
+linic前的系数发现，治疗方式2比治疗方式1要好。然后文章利用ph假定确定了两种治疗方式的区别会岁随时间改变。因此可以用对数-检验对两种不同的治疗方式进行了比
+较。通过对数-秩检验计算得到两种治疗方式对戒毒所需时间有着显著差异。综合可以得到，治疗方法2显著优于治疗方法1。此外,本文还探讨了治疗方法和入狱记录、美沙酮剂量
+是否有协同作用。通过两个COX PH回归模型，做方差分析后，可以认为治疗方法和入狱记录、美沙酮剂量之间没有协同作用。
+\end_layout
+
+\begin_layout Section
+模型和方法
+\end_layout
+
+\begin_layout Standard
+在世界上的众多国家中，禁止毒品的销售和使用一直是政府工作的重担之一。而毒品犹如“白色幽灵”弥散在全球各个角落，势头愈演愈烈。海洛因(Heroin)便是其中一种上
+瘾的药物，是最被滥用的药物之一，一般由吗啡处理而成，通常显示为白色或棕色粉末。全球鸦片产量自1996年以来每年均在4000吨以上，非法使用毒品的人数有4.47亿，
+占总人品的近8％。禁毒也已成为各国政府无法回避的任务和人类面临的共同使命。因此，探索各种有效地戒毒方法也成为专家学者们研究的重点。例如，美沙酮(methadon
+e)，一种合成阿片类药物，能阻止海洛因和消除戒断症状的影响，已被证明成功的为海洛因成瘾的治疗。本文尝试借助生存分析模型，来分析美沙酮对治疗青少年海洛因成瘾的效果
+。
+\end_layout
+
+\begin_layout Standard
+生存分析（survival analysis）也称之为风险模型（hazard model）或持续模型（duration model）,是一种根据实验或调查数据,
+对生物、人以及具有类似于生存规律的其它事物的生存时间进行分析和推断的统计方法。目前生存分析已广泛应用于生物统计、医学、金融和工业工程等多个领域。
+\end_layout
+
+\begin_layout Standard
+广义的生存时间指生物体存活的时间,或所关心的某种现象的持续时间。道路拥堵持续时间是指从交通拥堵现象产生开始,一直到拥堵结束为止的持续时间,属于广义生存时间范畴，
+可运用生存分析方法来对其进行研究。 令T代表生存的时间（ 寿命）,它是一个非负的随机变量,令
+\begin_inset Formula $f(t)$
+\end_inset
+
+表示T的概率密度函数，P 代表概率，T 的分布函数为
+\begin_inset Formula $F(t)=P(T\leqslant t)=\int_{0}^{t}f(x)dx$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+生存函数S(t)，也叫生存率，表示生存时间大于t的概率，它的表达式为
+\begin_inset Formula $S(t)=P(T>t)=1-F(t)=\int_{t}^{\infty}f(x)dx$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+生存分析中，T可以用危险率函数h(t)来描述。危险率函数也叫条件生存率，它指病人从患病起持续了t时间后没有结束，但在接下来的一段很小的时间
+\begin_inset Formula $\Delta t$
+\end_inset
+
+内结束的概率，可表示为
+\begin_inset Formula $h(t)={\displaystyle \lim_{\Delta t\rightarrow\infty}\frac{P(t\leqslant T<t+\Delta t|T\geqslant t)}{\Delta t}}=\frac{f(t)}{S(t)}=\frac{-dlnS(t)}{dt}$
+\end_inset
+
+。它表示死亡速率的大小。如以t为横坐,f(t)为纵坐标作出的曲线称为密度曲线,由曲线上可看出不同时间的死亡速率及死亡高峰时间。纵坐标越大,其死亡速率越高,如曲线
+呈现单调下降,则死亡速率越来越小,如呈现峰值,则为死亡高峰。 
+\end_layout
+
+\begin_layout Section
+数据和样本提取
+\end_layout
+
+\begin_layout Standard
+戒毒数据来自于澳大利亚学者Caplehorn et al.在2007年进行的研究。他收集了238例子海洛因成瘾者的戒毒数据。为评价美沙酮的治疗效果，这些成瘾者分别
+接受了2种不同的治疗方式，即为Clinc1和Clinc2。每名成瘾者的的生存时间定义为从其接受治疗到他成功戒掉毒瘾（类似于一般生存分析中的“死亡”，为区别，记作
+“戒瘾”）或是由于死亡，其他疾病，可能的药物副作用，或个人原因不愿意继续下去以天数记的时间（称为失访）。我们把这些在跟踪调研内未到达调查终点的成瘾者的数据称为失
+访或截尾观察（censored observation）。
+\end_layout
+
+\begin_layout Standard
+数据内容见附表，其中变量说明如下：
+\end_layout
+
+\begin_layout Standard
+ID：成瘾者的调研号；
+\end_layout
+
+\begin_layout Standard
+SURVT：成瘾者的生存时间，即其从其接受治疗到他成功戒掉毒瘾或是由于死亡，其他疾病，可能的药物副作用，或个人原因不愿意继续下去的时间（以天数记）；
+\end_layout
+
+\begin_layout Standard
+STATUS：成瘾者的生存时间的指标，，取值1表示成瘾者成功戒掉毒瘾,取值0表示成瘾者由于死亡，其他疾病，可能的药物副作用，或个人原因不愿意继续下去；
+\end_layout
+
+\begin_layout Standard
+CLINIC：成瘾者接受的治疗方式的指标，取值1表示成瘾者接受的是治疗方式1,取值2表示成瘾者接受的是治疗方式2；
+\end_layout
+
+\begin_layout Standard
+PRISON：成瘾者是否有过入狱记录的指标，取值1表示成瘾者有过入狱记录,取值0表示成瘾者从未入狱；
+\end_layout
+
+\begin_layout Standard
+DOSE：成瘾者平均每天接受美沙酮治疗的剂量 (mg/day).
+ 
+\end_layout
+
+\begin_layout Section
+实证分析
+\end_layout
+
+\begin_layout Subsection
+乘积极限法(Product-Limit Method)
+\end_layout
+
+\begin_layout Standard
+乘积极限法又称为积限法或PL法,它是由统计学家Kaplan和Meier于1958年首先提出的, 因此又称为Kaplan-Meier法,它是一种利用条件概率及概率
+的乘法原理计算生存率及其标准误的方法。
+\end_layout
+
+\begin_layout Standard
+设S(t)表示t年的生存率,
+\begin_inset Formula $S(t_{i}|t_{i-1})$
+\end_inset
+
+表示活过
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+年后再活过
+\begin_inset Formula $t_{i}$
+\end_inset
+
+年的条件概率。根据条件概率的性质有
+\begin_inset Formula $S(t_{2})=S(t_{1})S(t_{i}|t_{i-1})$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+设
+\begin_inset Formula $S_{i-1}$
+\end_inset
+
+是个体存活到
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+时没有失访的人数，设在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时仍存活
+\begin_inset Formula $S_{i}$
+\end_inset
+
+人，失败
+\begin_inset Formula $d_{i}$
+\end_inset
+
+人，失访
+\begin_inset Formula $l_{i}$
+\end_inset
+
+人，于是有
+\begin_inset Formula $S_{i-1}=S_{i}+d_{i}+l_{i}$
+\end_inset
+
+，因此可以估计
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+时的存活着到时刻
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时的生存概率为
+\begin_inset Formula $1-\frac{d_{i}}{S_{i-1}}=1-\frac{d_{i}}{S_{i}+d_{i}+l_{i}}$
+\end_inset
+
+，
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时的失访者在
+\begin_inset Formula $t>t_{i}$
+\end_inset
+
+是不会对生存函数构成影响。所以在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+上的生存概率
+\begin_inset Formula $S(t_{i})$
+\end_inset
+
+的Kaplan-Meier估计量公式为：
+\begin_inset Formula $\hat{S}(t_{i})=\left(1-\frac{d_{1}}{S_{0}}\right)\left(1-\frac{d_{2}}{S_{1}}\right)\cdots\left(1-\frac{d_{i}}{S_{i-1}}\right)$
+\end_inset
+
+，
+\begin_inset Formula $i=1,2,\cdots,k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+在引入
+\begin_inset Formula $Var\{ln[\hat{S}(t)]\}={\displaystyle \sum_{j=1}^{i}\frac{d_{j}}{S_{j-1}(S_{j-1}-d_{j})}}$
+\end_inset
+
+，于是可以解得在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+上的生存概率
+\begin_inset Formula $S(t_{i})$
+\end_inset
+
+的双侧100%×(1-α)CI即为
+\begin_inset Formula $(e^{c_{L}},e^{c_{R}})$
+\end_inset
+
+，则
+\begin_inset Formula $c_{L}=ln[\hat{S}(t_{i})-z_{1-\frac{\alpha}{2}}se\{ln[\hat{S}(t_{i})]\}]$
+\end_inset
+
+，
+\begin_inset Formula $c_{R}=ln[\hat{S}(t_{i})+z_{1-\frac{\alpha}{2}}se\{ln[\hat{S}(t_{i})]\}]$
+\end_inset
+
+。通过KM法计算可以得到各时间段的KM估计。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figure/bio_KM.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+把两种不同治疗方法的生存率分开计算，可得下图。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figure/bio_tmethod.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+比较危险率模型(Proportaional-Hazards Model)
+\end_layout
+
+\begin_layout Standard
+对数秩检验是一个很有效的分析数据的方法，它把事件的发生跟时间联系在一起，这比简单地把时间部分时间只考虑发生与不发生要好。在这个检验中，对个体做追踪调查时，可允许
+数据中存在部分失访数据。
+\end_layout
+
+\begin_layout Standard
+借助logit模型的构造思想，cox比例风险模型为：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $ln\frac{h(t)}{h_{0}(t)}=(\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+它另一个常见的形式为：
+\begin_inset Formula $h(t)=h_{0}(t)exp(\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中
+\begin_inset Formula $x_{1},x_{2},\cdots,x_{k}$
+\end_inset
+
+是一组独立变量，而
+\begin_inset Formula $h_{0}(t)$
+\end_inset
+
+是在基准状态下在t时刻上的基准危险率，它代表所有独立变量全取值0是的危险率吗，即不存在因素
+\begin_inset Formula $x_{1},x_{2},\cdots,x_{k}$
+\end_inset
+
+的影响的t时刻死亡率。
+\end_layout
+
+\begin_layout Standard
+由于
+\begin_inset Formula $h_{0}(t)$
+\end_inset
+
+是未知的，所以又称为半参数模型。该模型通过建立偏似然函数，使对数偏似然函数最大并用最大似然法的Newton-Raphson迭代得到参数的估计值。该模型的系数意义
+为：
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+表示存在因素
+\begin_inset Formula $x_{j}$
+\end_inset
+
+下，死亡的风险率是不存在因素
+\begin_inset Formula $x_{j}$
+\end_inset
+
+的
+\begin_inset Formula $e^{\beta_{j}}$
+\end_inset
+
+倍。
+\begin_inset Formula $\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k}$
+\end_inset
+
+为风险指数（hazard index，简称HI），又称预后指数（prognostic index）或预后得分（prognostic score）。
+ HI=0代表风险处于平均水平；HI<0代表风险处于低水平；HI>0代表风险处于高水平。 做出零假设为
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+：
+\begin_inset Formula $\beta_{j}=0$
+\end_inset
+
+，备择假设为
+\begin_inset Formula $H_{j1}$
+\end_inset
+
+：
+\begin_inset Formula $\beta_{j}\neq0$
+\end_inset
+
+，计算检验统计量
+\begin_inset Formula $z=\frac{\hat{\beta_{j}}}{se(\hat{\beta_{j}})}$
+\end_inset
+
+，当显著性水平为
+\begin_inset Formula $\alpha$
+\end_inset
+
+时，当
+\begin_inset Formula $z<z_{\frac{\alpha}{2}}$
+\end_inset
+
+或
+\begin_inset Formula $z>z_{1-\frac{\alpha}{2}}$
+\end_inset
+
+时，则拒绝
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+；若
+\begin_inset Formula $z_{\frac{\alpha}{2}}\leqslant z\leqslant z_{1-\frac{\alpha}{2}}$
+\end_inset
+
+，则接受
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+。 
+\end_layout
+
+\begin_layout Standard
+经过计算的各项系数及其标准差如下表所示：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+coef
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+exp(coef)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+se(coef)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+z
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Pr(>|z|)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+prison
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.326555
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1.386184
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.167225
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1.953
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.0508 .
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+dose
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-0.035369
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.965249
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.006379
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-5.545
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2.94E-08 ***
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+clinic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-1.009896
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.364257
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+0.214889
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-4.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2.61E-06 ***
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Signif.
+ codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+\end_layout
+
+\begin_layout Standard
+得到的cox风险比例模型为
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $h(t)=h_{0}(t)exp(0.326555prison-0.035369dose-1.009896clinic)$
+\end_inset
+
+可以看出，在
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+=0.1时，所有系数均显著，且prison前面的系数前面符号为正，说明有入狱记录的成瘾者的风险更大，而dose、clinic前面的系数前面符号为负，分别说明美沙酮
+的平均每天剂量越大，成瘾者的戒瘾效率更好和治疗方式2的戒瘾效果要好于治疗方式1。
+\end_layout
+
+\begin_layout Subsection
+PH假定
+\end_layout
+
+\begin_layout Standard
+PH假定即比例风险假定（proportional hazards assumption），即一个比例风险模型具有不同个体有成比例的性质，即对于两个协变量X1和X
+2，h(t|X1)/h(t|X2)不随时间t改变，这是由比例风险模型的形式决定的。
+\end_layout
+
+\begin_layout Standard
+同时，它意味着二次对数生存曲线（log-log survival curves）应该平行。即 
+\begin_inset Formula $h(t)=h_{0}(t)^{exp(\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k})}$
+\end_inset
+
+两边对数值加上负号，再取对数 
+\begin_inset Formula $ln(-ln(h(t)))=ln(-ln(h_{0}(t)))-(\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k})=ln(-ln(h_{0}(t)))+bX$
+\end_inset
+
+ 这是二次对数生存率，记为LML，可以发现，不同的LML相差只是个与t无关的常数：
+\begin_inset Formula $LML_{1}-LML_{2}=b(X_{1}-X_{2})$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figure/bio_PH假设.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+从上图可以看出，两条曲线并没有平行，也就是不符合PH假设，即两种治疗方式之间h(t|X1)/h(t|X2)随时间t改变。
+\end_layout
+
+\begin_layout Subsection
+对数-秩检验
+\end_layout
+
+\begin_layout Standard
+我们虽然可以从KM生存曲线比较指定时间点上的两者疗法的生存率的大小。但要比较两条生存曲线，则需要对两曲线减的差异做比较。一般地，在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时危险率定义为为
+\begin_inset Formula $\hat{h}(t_{i})=\frac{d_{i}}{S_{i-1}}$
+\end_inset
+
+。为区分两种治疗方式的危险率，定义
+\begin_inset Formula $h_{1}(t)$
+\end_inset
+
+=治疗方式1中成瘾者在时间t的危险率，
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $h_{2}(t)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+=治疗方式2中成瘾者在时间t的危险率。
+\end_layout
+
+\begin_layout Standard
+因为我们假设危险率是符合logistic模型，因此可以假定这两个危险率之比是常数
+\begin_inset Formula $exp(\beta)$
+\end_inset
+
+,即
+\begin_inset Formula $\frac{h_{1}(t)}{h_{2}(t)}=exp(\beta)$
+\end_inset
+
+。要检验两种治疗方式是否有显著差异，做出零假设零假设为
+\begin_inset Formula $H_{0}$
+\end_inset
+
+：
+\begin_inset Formula $\beta=0$
+\end_inset
+
+，备择假设为
+\begin_inset Formula $H_{1}$
+\end_inset
+
+：
+\begin_inset Formula $\beta\neq0$
+\end_inset
+
+。若
+\begin_inset Formula $\beta=0$
+\end_inset
+
+，则表示两条生存曲线基本相同；若
+\begin_inset Formula $\beta<0$
+\end_inset
+
+，说明治疗方式1比治疗方式2的治疗效果更好；若
+\begin_inset Formula $\beta>0$
+\end_inset
+
+，说明治疗方式2比治疗方式1的治疗效果更好。
+\end_layout
+
+\begin_layout Standard
+比较两种治疗方法的危险率的对数-秩检验，设调研时间长度为T，危险率随对眼时间而改变。把T划分成k个较小的时间区间，在每个小区间上，危险率被认为是齐性的。计算每个
+时间区间上的2×2列联表，如下图所示
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+治疗方法
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+戒瘾
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+未戒瘾（失败或失访）
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+总数
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+治疗方法1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+治疗方法2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $d_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+总数
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $a_{i}+c_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $b_{i}+d_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中，各变量的定义如下：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a_{i}$
+\end_inset
+
+=接受治疗方法1的成瘾者中，在第i个时间区间内成功戒瘾的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $b_{i}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+=接受治疗方法1的成瘾者中，在第i个时间区间内未成功戒瘾的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+=接受治疗方法2的成瘾者中，在第i个时间区间内成功戒瘾的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $d_{i}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+=接受治疗方法2的成瘾者中，在第i个时间区间内未成功戒瘾的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i1}$
+\end_inset
+
+=在第i个时间区间开始时，接受治疗方法1的成瘾者的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i2}$
+\end_inset
+
+=在第i个时间区间开始时，接受治疗方法2的成瘾者的个数；
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $n_{i}$
+\end_inset
+
+=在第i个时间区间开始时，还在继续接受治疗的成瘾者的个数；
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+根据上面的列联表做Mantel-Haenszel检验，即计算检验统计量
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{LR}^{2}=\frac{(|O-E|-0.5)^{2}}{Var_{LR}}$
+\end_inset
+
+其中式中的各变量的计算公式如下：
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Formula $O={\displaystyle \sum_{i=1}^{k}a_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $E={\displaystyle \sum_{i=1}^{k}E_{i}}={\displaystyle \sum_{i=1}^{k}\frac{(a_{i}+b_{i})(a_{i}+c_{i})}{n_{i}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $Var_{LR}={\displaystyle \sum_{i=1}^{k}V_{i}}={\displaystyle \sum_{i=1}^{k}\frac{(a_{i}+b_{i})(c_{i}+d_{i})(a_{i}+c_{i})(b_{i}+d_{i})}{n_{i}^{2}(n_{i}-1)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+在
+\lang chinese-simplified
+
+\begin_inset Formula $H_{0}$
+\end_inset
+
+成立的条件下，
+\begin_inset Formula $X_{LR}^{2}$
+\end_inset
+
+服从自由度为1的卡方分布。
+\end_layout
+
+\begin_layout Standard
+对于双侧显著性水平为a的检验，若
+\begin_inset Formula $X_{LR}^{2}>\chi_{1-\alpha}^{2}(1)$
+\end_inset
+
+，则拒绝
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $H_{0}$
+\end_inset
+
+;
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+若
+\begin_inset Formula $X_{LR}^{2}\leqslant\chi_{1-\alpha}^{2}(1)$
+\end_inset
+
+，则
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+接受
+\begin_inset Formula $H_{0}$
+\end_inset
+
+。一般要求
+\begin_inset Formula $Var_{LR}\geqslant5$
+\end_inset
+
+时，此检验才可以适用。通过计算可得，
+
+\begin_inset Formula $Var_{LR}$
+\end_inset
+
+=
+34.65794>5,因此此检验适用。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+
+\begin_inset Formula $X_{LR}^{2}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+= 27.9 , p 值= 1.28e-07 <0.05，即说明两种治疗方式对戒毒的效果有着显著差异。
+\end_layout
+
+\begin_layout Subsection
+治疗方法和入狱记录、美沙酮剂量的协同作业分析
+\end_layout
+
+\begin_layout Standard
+为检验治疗方法和入狱记录、美沙酮剂量是否有协同作用。做两个COX PH回归模型：没有考虑协同作用的
+\begin_inset Formula $h_{1}(t)=h_{0}(t)exp(\beta_{1}prison+\beta_{2}dose+\beta_{3}clinic)$
+\end_inset
+
+和考虑治疗方法和入狱记录、美沙酮剂量的协同作用的
+\begin_inset Formula $h_{2}(t)=h_{0}(t)exp(\beta_{1}prison+\beta_{2}dose+\beta_{3}clinic+\beta_{4}clinic\times prison+\beta_{3}clinic\times dose)$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+回归结果为
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $h_{1}(t)=h_{0}(t)exp(0.326555prison-0.035369dose-1.009896clinic)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $h_{2}(t)=h_{0}(t)exp(1.19238prison+0.9810dose+1.1967clinic+0.4779clinic\times prison+0.9861clinic\times dose)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+做两者的方差分析，
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $h_{1}(t)$
+\end_inset
+
+的极大似然值为-673.26,
+\begin_inset Formula $h_{2}(t)$
+\end_inset
+
+的极大似然值为-671.45,卡方值为3.6182，p值为0.1638>0.05，即认为
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+治疗方法和入狱记录、美沙酮剂量之间没有协同作用。两个方程之间差异不大，就需要比较两个方程的AIC值，
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $h_{1}(t)$
+\end_inset
+
+的AIC=1351.86，小于
+\begin_inset Formula $h_{2}(t)$
+\end_inset
+
+的AIC1352.9，所以认为方程1表示更好。
+\end_layout
+
+\begin_layout Section
+结论
+\end_layout
+
+\begin_layout Standard
+本文主要根据生存分析中的方法，分析了238例美沙酮治疗海洛因成瘾者的戒毒数据，研究了不同的治疗方法对吸毒者戒毒的效果的影响。本文通过乘积极限法（PM法）建立海洛
+因成瘾者的戒瘾时间的生存率模型，然后用Cox 比较危险率模型（PH模型）分析了治疗方式、入狱记录、美沙酮剂量对戒毒所需时间的影响。模型
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+结果为
+\begin_inset Formula $h(t)=h_{0}(t)exp(0.326555prison-0.035369dose-1.009896clinic)$
+\end_inset
+
+。通过clinic前的系数发现，治疗方式2比治疗方式1要好。因此根据ph假定对两种治疗方式的区别是否随时间改变。实验结果表明两者两种治疗方式的区别随时间改变
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+，因此可以用对数-秩检验对两种不同的治疗方式进行了比较。通过对数-秩检验计算得到
+\begin_inset Formula $X_{LR}^{2}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+= 27.9 , p 值= 1.28e-07 <0.05，即说明两种治疗方式对戒毒对戒毒所需时间有着显著差异。由结合clinic的系数符号为正，知道治疗方法2好于治疗
+方法1。综合可以得到，治疗方法2显著优于治疗方法1。
+\end_layout
+
+\begin_layout Standard
+此外,本文还探讨了治疗方法和入狱记录、美沙酮剂量是否有协同作用。通过两个COX PH回归模型，做方差分析知，
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+两个模型卡方值为3.6182，p值为0.1638>0.05，即认为
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang chinese-simplified
+治疗方法和入狱记录、美沙酮剂量之间没有协同作用。
+\end_layout
+
+\begin_layout Standard
+本文只是用生存分析方法研究了美沙酮的剂量、治疗方法、是否有入狱激励对戒毒所需时间的影响规律，如果能取到更多的数据，还可以进一步深入分析影响戒毒所需时间的影响因素
+等问题。由此可以看出，生存分析在医药分析，疾病预防治疗控制等方面有着重要用途。
+\end_layout
+
+\end_body
+\end_document

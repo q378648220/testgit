@@ -1,0 +1,1575 @@
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xetex 2013.11.25)  25 NOV 2013 22:47
+entering extended mode
+**RegressionIssue2.tex
+(E:\workspace\testsync\rlearn\RegressionIssue2.tex
+! Undefined control sequence.
+l.2 \makeatletter
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.4 \makeatother
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 \documentclass
+                  [english]{article}\usepackage[]{graphicx}\usepackage[]{color}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 \documentclass[english]{article}\usepackage
+                                               []{graphicx}\usepackage[]{color}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 ...{article}\usepackage[]{graphicx}\usepackage
+                                                  []{color}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.8 \makeatletter
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.16 \makeatother
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.18 \definecolor
+                 {fgcolor}{rgb}{0.345, 0.345, 0.345}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.19 \newcommand
+                {\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.19 \newcommand{\hlnum
+                       }[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.19 \newcommand{\hlnum}[1]{\textcolor
+                                      [rgb]{0.686,0.059,0.569}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.19 ...m}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.20 \newcommand
+                {\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.20 \newcommand{\hlstr
+                       }[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.20 \newcommand{\hlstr}[1]{\textcolor
+                                      [rgb]{0.192,0.494,0.8}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.20 ...str}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.21 \newcommand
+                {\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.21 \newcommand{\hlcom
+                       }[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.21 \newcommand{\hlcom}[1]{\textcolor
+                                      [rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.21 ...\textcolor[rgb]{0.678,0.584,0.686}{\textit
+                                                  {#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.21 ...extcolor[rgb]{0.678,0.584,0.686}{\textit{#
+                                                  1}}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.22 \newcommand
+                {\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.22 \newcommand{\hlopt
+                       }[1]{\textcolor[rgb]{0,0,0}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.22 \newcommand{\hlopt}[1]{\textcolor
+                                      [rgb]{0,0,0}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.22 ...ommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.23 \newcommand
+                {\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.23 \newcommand{\hlstd
+                       }[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.23 \newcommand{\hlstd}[1]{\textcolor
+                                      [rgb]{0.345,0.345,0.345}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.23 ...d}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.24 \newcommand
+                {\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.24 \newcommand{\hlkwa
+                       }[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.24 \newcommand{\hlkwa}[1]{\textcolor
+                                      [rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.24 ...{\textcolor[rgb]{0.161,0.373,0.58}{\textbf
+                                                  {#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.24 ...textcolor[rgb]{0.161,0.373,0.58}{\textbf{#
+                                                  1}}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.25 \newcommand
+                {\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.25 \newcommand{\hlkwb
+                       }[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.25 \newcommand{\hlkwb}[1]{\textcolor
+                                      [rgb]{0.69,0.353,0.396}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.25 ...wb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.26 \newcommand
+                {\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.26 \newcommand{\hlkwc
+                       }[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.26 \newcommand{\hlkwc}[1]{\textcolor
+                                      [rgb]{0.333,0.667,0.333}{#1}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.26 ...c}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#
+                                                  1}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Undefined control sequence.
+l.27 \newcommand
+                {\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.27 \newcommand{\hlkwd
+                       }[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.27 \newcommand{\hlkwd}[1]{\textcolor
+                                      [rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.27 ...\textcolor[rgb]{0.737,0.353,0.396}{\textbf
+                                                  {#1}}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.27 ...extcolor[rgb]{0.737,0.353,0.396}{\textbf{#
+                                                  1}}}%
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+Overfull \hbox (586.83139pt too wide) in paragraph at lines 18--28
+[]\tenrm fgcolorrgb0.345, 0.345, 0.345 [1][rgb]0.686,0.059,0.5691[1][rgb]0.192,
+0.494,0.81[1][rgb]0.678,0.584,0.6861[1][rgb]0,0,01[1][rgb]0.345,0.345,0.3451[1]
+[rgb]0.161,0.373,0.581[1][rgb]0.69,0.353,0.3961[1][rgb]0.333,0.667,0.3331[1][rg
+b]0.737,0.353,0.3961 |
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm f
+.\tenrm g
+.\tenrm c
+.\tenrm o
+.etc.
+
+! Undefined control sequence.
+l.29 \usepackage
+                {framed}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.30 \makeatletter
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.31 \newenvironment
+                    {kframe}{%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Parameters must be numbered consecutively.
+<to be read again> 
+                   ##
+l.37  \def\FrameCommand##
+                         1{\hskip\@totalleftmargin \hskip-\fboxsep
+I've inserted the digit you should have used after the #.
+Type `1' to delete what you did use.
+
+! Parameters must be numbered consecutively.
+<to be read again> 
+                   1
+l.37  \def\FrameCommand##1
+                          {\hskip\@totalleftmargin \hskip-\fboxsep
+I've inserted the digit you should have used after the #.
+Type `1' to delete what you did use.
+
+! Undefined control sequence.
+l.41  \MakeFramed
+                  {\advance\hsize-\width
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.41  \MakeFramed {\advance\hsize-\width
+                                        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.42    \@
+          totalleftmargin\z@ \linewidth\hsize
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   t
+l.42    \@t
+           otalleftmargin\z@ \linewidth\hsize
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   t
+<to be read again> 
+                   o
+l.42    \@to
+            talleftmargin\z@ \linewidth\hsize
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.42    \@totalleftmargin\z
+                           @ \linewidth\hsize
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.42    \@totalleftmargin\z@ \linewidth
+                                       \hsize
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.43    \@
+          setminipage}}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   s
+l.43    \@s
+           etminipage}}%
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+<to be read again> 
+                   e
+l.43    \@se
+            tminipage}}%
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.44  {\par\unskip\endMakeFramed
+                                %
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.45  \at
+         @end@of@kframe}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.46 \makeatother
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.48 \definecolor
+                 {shadecolor}{rgb}{.97, .97, .97}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.49 \definecolor
+                 {messagecolor}{rgb}{0, 0, 0}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.50 \definecolor
+                 {warningcolor}{rgb}{1, 0, 1}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.51 \definecolor
+                 {errorcolor}{rgb}{1, 0, 0}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.52 \newenvironment
+                    {knitrout}{}{} % an empty environment to be redefined in...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.54 \usepackage
+                {alltt}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.55 \usepackage
+                {babel}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.56 \usepackage
+                {amsmath}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.57 \usepackage
+                [unicode=true,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.61 \hypersetup
+                {pdftitle={LyTeX xeCJK template},
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (1.52396pt too wide) in paragraph at lines 54--65
+[]\tenrm alltt ba-bel ams-math [uni-code=true, book-marks=true,bookmarksnumbere
+d=false,bookmarksopen=false,|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm a
+.\tenrm l
+.\tenrm l
+.\tenrm t
+.etc.
+
+! Undefined control sequence.
+l.66 \makeatletter
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.74 \usepackage
+                [CJKtextspaces,CJKnumber]{xeCJK}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.75 \setCJKmainfont
+                    [BoldFont=SimHei]{SimSun}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.76 \setCJKsansfont
+                    {SimHei}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.77 \setCJKmonofont
+                    {NSimSun}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.79 \setCJKfamilyfont
+                      {song}{SimSun}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.80 \setCJKfamilyfont
+                      {hei}{SimHei}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.82 \makeatother
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.83 \IfFileExists
+                  {upquote.sty}{\usepackage{upquote}}{}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.83 \IfFileExists{upquote.sty}{\usepackage
+                                           {upquote}}{}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.85 \begin
+           {document}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.87 \title
+           {稳健简单线性回归}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 简 in font cmr10!
+Missing character: There is no 单 in font cmr10!
+Missing character: There is no 线 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 回 in font cmr10!
+Missing character: There is no 归 in font cmr10!
+! Undefined control sequence.
+l.90 \author
+            {蒋冰}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 蒋 in font cmr10!
+Missing character: There is no 冰 in font cmr10!
+! Undefined control sequence.
+l.92 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.94 \section
+             {问题介绍}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 介 in font cmr10!
+Missing character: There is no 绍 in font cmr10!
+Missing character: There is no 大 in font cmr10!
+Missing character: There is no 多 in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 传 in font cmr10!
+Missing character: There is no 统 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 统 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 在 in font cmr10!
+Missing character: There is no 对 in font cmr10!
+Missing character: There is no 研 in font cmr10!
+Missing character: There is no 究 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 总 in font cmr10!
+Missing character: There is no 体 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 形 in font cmr10!
+Missing character: There is no 式 in font cmr10!
+Missing character: There is no 和 in font cmr10!
+Missing character: There is no 其 in font cmr10!
+Missing character: There is no 他 in font cmr10!
+Missing character: There is no 特 in font cmr10!
+Missing character: There is no 征 in font cmr10!
+Missing character: There is no 做 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 些 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 设 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 情 in font cmr10!
+Missing character: There is no 况 in font cmr10!
+Missing character: There is no 下 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 而 in font cmr10!
+Missing character: There is no 实 in font cmr10!
+Missing character: There is no 际 in font cmr10!
+Missing character: There is no 总 in font cmr10!
+Missing character: There is no 体 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 满 in font cmr10!
+Missing character: There is no 足 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 设 in font cmr10!
+Missing character: There is no 条 in font cmr10!
+Missing character: There is no 件 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 或 in font cmr10!
+Missing character: There is no 观 in font cmr10!
+Missing character: There is no 察 in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 据 in font cmr10!
+Missing character: There is no 中 in font cmr10!
+Missing character: There is no 包 in font cmr10!
+Missing character: There is no 含 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 能 in font cmr10!
+Missing character: There is no 代 in font cmr10!
+Missing character: There is no 表 in font cmr10!
+Missing character: There is no 总 in font cmr10!
+Missing character: There is no 体 in font cmr10!
+Missing character: There is no 特 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no （ in font cmr10!
+Missing character: There is no ） in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 传 in font cmr10!
+Missing character: There is no 统 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 统 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+Missing character: There is no 可 in font cmr10!
+Missing character: There is no 能 in font cmr10!
+Missing character: There is no 就 in font cmr10!
+Missing character: There is no 会 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 现 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 大 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 由 in font cmr10!
+Missing character: There is no 于 in font cmr10!
+Missing character: There is no 仪 in font cmr10!
+Missing character: There is no 器 in font cmr10!
+Missing character: There is no 故 in font cmr10!
+Missing character: There is no 障 in font cmr10!
+Missing character: There is no 、 in font cmr10!
+Missing character: There is no 操 in font cmr10!
+Missing character: There is no 作 in font cmr10!
+Missing character: There is no 失 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 等 in font cmr10!
+Missing character: There is no 原 in font cmr10!
+Missing character: There is no 因 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 很 in font cmr10!
+Missing character: There is no 容 in font cmr10!
+Missing character: There is no 易 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 现 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 因 in font cmr10!
+Missing character: There is no 此 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 偏 in font cmr10!
+Missing character: There is no 离 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 设 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 见 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 现 in font cmr10!
+Missing character: There is no 象 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 通 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 据 in font cmr10!
+Missing character: There is no 量 in font cmr10!
+Missing character: There is no 比 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 少 in font cmr10!
+Missing character: There is no 和 in font cmr10!
+Missing character: There is no 自 in font cmr10!
+Missing character: There is no 变 in font cmr10!
+Missing character: There is no 量 in font cmr10!
+Missing character: There is no 个 in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 多 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 可 in font cmr10!
+Missing character: There is no 由 in font cmr10!
+Missing character: There is no 散 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no 图 in font cmr10!
+Missing character: There is no 或 in font cmr10!
+Missing character: There is no 残 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 图 in font cmr10!
+Missing character: There is no 等 in font cmr10!
+Missing character: There is no 找 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 但 in font cmr10!
+Missing character: There is no 当 in font cmr10!
+Missing character: There is no 样 in font cmr10!
+Missing character: There is no 本 in font cmr10!
+Missing character: There is no 量 in font cmr10!
+Missing character: There is no 增 in font cmr10!
+Missing character: There is no 大 in font cmr10!
+Missing character: There is no 或 in font cmr10!
+Missing character: There is no 自 in font cmr10!
+Missing character: There is no 变 in font cmr10!
+Missing character: There is no 量 in font cmr10!
+Missing character: There is no 个 in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 增 in font cmr10!
+Missing character: There is no 多 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 检 in font cmr10!
+Missing character: There is no 测 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no 就 in font cmr10!
+Missing character: There is no 会 in font cmr10!
+Missing character: There is no 变 in font cmr10!
+Missing character: There is no 得 in font cmr10!
+Missing character: There is no 很 in font cmr10!
+Missing character: There is no 困 in font cmr10!
+Missing character: There is no 难 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 而 in font cmr10!
+Missing character: There is no 且 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 即 in font cmr10!
+Missing character: There is no 使 in font cmr10!
+Missing character: There is no 找 in font cmr10!
+Missing character: There is no 出 in font cmr10!
+Missing character: There is no 了 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 若 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 由 in font cmr10!
+Missing character: There is no 于 in font cmr10!
+Missing character: There is no 记 in font cmr10!
+Missing character: There is no 录 in font cmr10!
+Missing character: There is no 、 in font cmr10!
+Missing character: There is no 录 in font cmr10!
+Missing character: There is no 入 in font cmr10!
+Missing character: There is no 等 in font cmr10!
+Missing character: There is no 人 in font cmr10!
+Missing character: There is no 为 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 造 in font cmr10!
+Missing character: There is no 成 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 剔 in font cmr10!
+Missing character: There is no 除 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no 就 in font cmr10!
+Missing character: There is no 没 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 充 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 理 in font cmr10!
+Missing character: There is no 由 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 所 in font cmr10!
+Missing character: There is no 以 in font cmr10!
+Missing character: There is no 需 in font cmr10!
+Missing character: There is no 要 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 种 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+Missing character: There is no 能 in font cmr10!
+Missing character: There is no 既 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 剔 in font cmr10!
+Missing character: There is no 除 in font cmr10!
+Missing character: There is no 由 in font cmr10!
+Missing character: There is no 随 in font cmr10!
+Missing character: There is no 机 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 造 in font cmr10!
+Missing character: There is no 成 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 客 in font cmr10!
+Missing character: There is no 观 in font cmr10!
+Missing character: There is no 存 in font cmr10!
+Missing character: There is no 在 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 又 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 会 in font cmr10!
+Missing character: There is no 对 in font cmr10!
+Missing character: There is no 回 in font cmr10!
+Missing character: There is no 归 in font cmr10!
+Missing character: There is no 系 in font cmr10!
+Missing character: There is no 数 in font cmr10!
+Missing character: There is no 影 in font cmr10!
+Missing character: There is no 响 in font cmr10!
+Missing character: There is no 太 in font cmr10!
+Missing character: There is no 大 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 回 in font cmr10!
+Missing character: There is no 归 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 即 in font cmr10!
+Missing character: There is no 具 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 指 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 在 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 过 in font cmr10!
+Missing character: There is no 程 in font cmr10!
+Missing character: There is no 中 in font cmr10!
+Missing character: There is no 产 in font cmr10!
+Missing character: There is no 生 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 量 in font cmr10!
+Missing character: There is no 对 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 敏 in font cmr10!
+Missing character: There is no 感 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 因 in font cmr10!
+Missing character: There is no 此 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 在 in font cmr10!
+Missing character: There is no 比 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 宽 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 资 in font cmr10!
+Missing character: There is no 料 in font cmr10!
+Missing character: There is no 范 in font cmr10!
+Missing character: There is no 围 in font cmr10!
+Missing character: There is no 内 in font cmr10!
+Missing character: There is no 产 in font cmr10!
+Missing character: There is no 生 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 优 in font cmr10!
+Missing character: There is no 良 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 如 in font cmr10!
+Missing character: There is no 在 in font cmr10!
+Missing character: There is no 独 in font cmr10!
+Missing character: There is no 立 in font cmr10!
+Missing character: There is no 同 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 正 in font cmr10!
+Missing character: There is no 态 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 线 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 中 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 最 in font cmr10!
+Missing character: There is no 小 in font cmr10!
+Missing character: There is no 二 in font cmr10!
+Missing character: There is no 乘 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 效 in font cmr10!
+Missing character: There is no 无 in font cmr10!
+Missing character: There is no 偏 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 然 in font cmr10!
+Missing character: There is no 而 in font cmr10!
+Missing character: There is no 当 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 非 in font cmr10!
+Missing character: There is no 正 in font cmr10!
+Missing character: There is no 态 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 定 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 最 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 效 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 但 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 事 in font cmr10!
+Missing character: There is no 先 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 定 in font cmr10!
+Missing character: There is no 知 in font cmr10!
+Missing character: There is no 道 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 故 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 必 in font cmr10!
+Missing character: There is no 要 in font cmr10!
+Missing character: There is no 考 in font cmr10!
+Missing character: There is no 虑 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 回 in font cmr10!
+Missing character: There is no 归 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 回 in font cmr10!
+Missing character: There is no 归 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 如 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 为 in font cmr10!
+Missing character: There is no 正 in font cmr10!
+Missing character: There is no 态 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 它 in font cmr10!
+Missing character: There is no 比 in font cmr10!
+Missing character: There is no 稍 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 点 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 但 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 非 in font cmr10!
+Missing character: There is no 正 in font cmr10!
+Missing character: There is no 态 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 它 in font cmr10!
+Missing character: There is no 比 in font cmr10!
+Missing character: There is no 要 in font cmr10!
+Missing character: There is no 好 in font cmr10!
+Missing character: There is no 得 in font cmr10!
+Missing character: There is no 多 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 这 in font cmr10!
+Missing character: There is no 种 in font cmr10!
+Missing character: There is no 对 in font cmr10!
+Missing character: There is no 误 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 项 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 特 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 能 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 效 in font cmr10!
+Missing character: There is no 排 in font cmr10!
+Missing character: There is no 除 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 常 in font cmr10!
+Missing character: There is no 值 in font cmr10!
+Missing character: There is no 干 in font cmr10!
+Missing character: There is no 扰 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+! Undefined control sequence.
+l.103 \section
+              {方法}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+! Undefined control sequence.
+l.106 \subsection
+                 {基本思想}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 基 in font cmr10!
+Missing character: There is no 本 in font cmr10!
+Missing character: There is no 思 in font cmr10!
+Missing character: There is no 想 in font cmr10!
+Missing character: There is no 稳 in font cmr10!
+Missing character: There is no 健 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 讨 in font cmr10!
+Missing character: There is no 论 in font cmr10!
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 式 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 对 in font cmr10!
+Missing character: There is no 于 in font cmr10!
+Missing character: There is no 实 in font cmr10!
+Missing character: There is no 际 in font cmr10!
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 个 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 定 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 同 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no 又 in font cmr10!
+Missing character: There is no 认 in font cmr10!
+Missing character: There is no 为 in font cmr10!
+Missing character: There is no 这 in font cmr10!
+Missing character: There is no 个 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 并 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 准 in font cmr10!
+Missing character: There is no 确 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 而 in font cmr10!
+Missing character: There is no 只 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 实 in font cmr10!
+Missing character: There is no 际 in font cmr10!
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 理 in font cmr10!
+Missing character: There is no 论 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 一 in font cmr10!
+Missing character: There is no 个 in font cmr10!
+Missing character: There is no 近 in font cmr10!
+Missing character: There is no 似 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 它 in font cmr10!
+Missing character: There is no 要 in font cmr10!
+Missing character: There is no 求 in font cmr10!
+Missing character: There is no 解 in font cmr10!
+Missing character: There is no 决 in font cmr10!
+Missing character: There is no 这 in font cmr10!
+Missing character: There is no 类 in font cmr10!
+Missing character: There is no 问 in font cmr10!
+Missing character: There is no 题 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 计 in font cmr10!
+Missing character: There is no 方 in font cmr10!
+Missing character: There is no 法 in font cmr10!
+Missing character: There is no 应 in font cmr10!
+Missing character: There is no 达 in font cmr10!
+Missing character: There is no 到 in font cmr10!
+Missing character: There is no 以 in font cmr10!
+Missing character: There is no 下 in font cmr10!
+Missing character: There is no 目 in font cmr10!
+Missing character: There is no 标 in font cmr10!
+Missing character: There is no ： in font cmr10!
+! Undefined control sequence.
+l.109 \begin
+            {enumerate}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 定 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 观 in font cmr10!
+Missing character: There is no 测 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 下 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 值 in font cmr10!
+Missing character: There is no 应 in font cmr10!
+Missing character: There is no 是 in font cmr10!
+Missing character: There is no 最 in font cmr10!
+Missing character: There is no 优 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 或 in font cmr10!
+Missing character: There is no 接 in font cmr10!
+Missing character: There is no 近 in font cmr10!
+Missing character: There is no 最 in font cmr10!
+Missing character: There is no 优 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 当 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 设 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 与 in font cmr10!
+Missing character: There is no 实 in font cmr10!
+Missing character: There is no 际 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 理 in font cmr10!
+Missing character: There is no 论 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 小 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 异 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 值 in font cmr10!
+Missing character: There is no 受 in font cmr10!
+Missing character: There is no 到 in font cmr10!
+Missing character: There is no 粗 in font cmr10!
+Missing character: There is no 差 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 影 in font cmr10!
+Missing character: There is no 响 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 小 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+Missing character: There is no 当 in font cmr10!
+Missing character: There is no 假 in font cmr10!
+Missing character: There is no 设 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 与 in font cmr10!
+Missing character: There is no 实 in font cmr10!
+Missing character: There is no 际 in font cmr10!
+Missing character: There is no 的 in font cmr10!
+Missing character: There is no 理 in font cmr10!
+Missing character: There is no 论 in font cmr10!
+Missing character: There is no 分 in font cmr10!
+Missing character: There is no 布 in font cmr10!
+Missing character: There is no 模 in font cmr10!
+Missing character: There is no 型 in font cmr10!
+Missing character: There is no 有 in font cmr10!
+Missing character: There is no 较 in font cmr10!
+Missing character: There is no 大 in font cmr10!
+Missing character: There is no 偏 in font cmr10!
+Missing character: There is no 离 in font cmr10!
+Missing character: There is no 时 in font cmr10!
+Missing character: There is no ， in font cmr10!
+Missing character: There is no 估 in font cmr10!
+Missing character: There is no 值 in font cmr10!
+Missing character: There is no 不 in font cmr10!
+Missing character: There is no 至 in font cmr10!
+Missing character: There is no 于 in font cmr10!
+Missing character: There is no 受 in font cmr10!
+Missing character: There is no 到 in font cmr10!
+Missing character: There is no 破 in font cmr10!
+Missing character: There is no 坏 in font cmr10!
+Missing character: There is no 性 in font cmr10!
+Missing character: There is no 影 in font cmr10!
+Missing character: There is no 响 in font cmr10!
+Missing character: There is no 。 in font cmr10!
+[1] )
+Output written on RegressionIssue2.pdf (1 page).

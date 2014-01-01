@@ -1,0 +1,2317 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% please do NOT remove these lines!
+% set file encoding for WinEdt
+% !Mode:: "TeX:UTF-8"
+% set typesetting program for TeXworks
+% !TEX program = XeLaTeX
+
+\usepackage[CJKtextspaces,CJKnumber]{xeCJK}                                      
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKsansfont{SimHei}         
+\setCJKmonofont{NSimSun}  
+
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "LyTeX"
+\pdf_author "Jiangbing"
+\pdf_subject "latex"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=false"
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+稳健简单线性回归
+\end_layout
+
+\begin_layout Author
+蒋冰
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+学号：201322130002
+\end_layout
+
+\begin_layout Section
+问题介绍
+\end_layout
+
+\begin_layout Standard
+大多数传统的统计方法是在对研究的总体的分布形式和其他特征做出一些假设的情况下的，而实际总体不满足假设条件，或观察数据中包含不能代表总体特性的异常点（Outlie
+rs）时，传统的统计方法可能就会出现较大误差。由于仪器故障、操作失误等原因，异常点是很容易出现的。因此，偏离假设是常见的现象。通常，数据量比较少和自变量个数不多
+时，可由散点图或残差图等找出异常点，但当样本量增大或自变量个数增多时，检测出异常点就会变得很困难。而且，即使找出了异常点，若异常点不是由于记录、录入等人为误差造
+成的，剔除异常点就没有充分理由。所以需要一种估计方法能既不剔除由随机误差造成的客观存在的异常点，又不会对回归系数影响太大的回归方法，即具有稳健性。
+\end_layout
+
+\begin_layout Standard
+估计的稳健性(Robustness)指的是在估计过程中产生的估计量对模型误差的不敏感性。因此稳健估计是在比较宽的资料范围内产生的优良估计。如在独立同分布正态误差
+的线性模型中，最小二乘估计(Ordinary Least Square , OLS )是有效无偏估计。然而当误差是非正态分布时，OLS不一定是最有效的。但误差分
+布事先不一定知道，故有必要考虑稳健回归的问题。稳健回归(Robust Regression)估计，如误差为正态时，它比OLS稍差一点，但误差非正态时，它比OLS
+要好得多。这种对误差项分布的稳健特性，常能有效排除异常值干扰。
+\end_layout
+
+\begin_layout Section
+方法
+\end_layout
+
+\begin_layout Subsection
+基本思想
+\end_layout
+
+\begin_layout Standard
+稳健估计讨论问题的方式是:对于实际问题有一个假定模型，同时又认为这个模型并不准确，而只是实际问题理论模型的一个近似。它要求解决这类问题的估计方法应达到以下目标：
+\end_layout
+
+\begin_layout Enumerate
+假定的观测分布模型下，估值应是最优的或接近最优的。
+\end_layout
+
+\begin_layout Enumerate
+当假设的分布模型与实际的理论分布模型有较小差异时，估值受到粗差的影响较小。
+\end_layout
+
+\begin_layout Enumerate
+当假设的分布模型与实际的理论分布模型有较大偏离时，估值不至于受到破坏性影响。
+\end_layout
+
+\begin_layout Standard
+稳健估计的基本思想是：在粗差不可避免的情况下，选择适当的估计方法，使参数的估值尽可能避免粗差的影响，得到正常模式下的最佳估值。稳健估计的原则是要充分利用观测数据
+（或样本）中的有效信息，限制利用可用信息，排除有害信息。由于事先不大准确知道观测数据中有效信息和有害信息所占比例以及它们具体包含在哪些观测中，从抗差的主要目标着
+眼是要冒损失一些效率的风险，去获得较可靠的、具有实际意义的、较有效的估值。 
+\end_layout
+
+\begin_layout Subsection
+M估计
+\end_layout
+
+\begin_layout Standard
+在最小二乘法估计中，回归系数
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+是使
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}e_{i}^{2}}$
+\end_inset
+
+达到最小，其中
+\begin_inset Formula ${\displaystyle e_{i}=y_{i}-\sum_{j=1}^{m}\beta_{i}x_{ij}}_{i}$
+\end_inset
+
+,若令
+\begin_inset Formula $\rho(x)=x^{2}$
+\end_inset
+
+,则
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+使
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}\rho(e_{i})=\sum_{i=1}^{n}e_{i}^{2}}$
+\end_inset
+
+达到最小。显然函数
+\begin_inset Formula $\rho(e_{i})=e_{i}^{2}$
+\end_inset
+
+随|x|的增大而增大，为使上式达到最小，就必须照顾某些点，特别是一些异常点。因此最小二乘法估计会往往使得那些远离数据群体的数据(很可能是异常值)对残差平方和影响
+比其他数据大得多。这是因为最小二乘估计为了达到极小化残差平方和的目的，必须迁就远端的数据，所以异常值对于参数估计相当敏感。
+\end_layout
+
+\begin_layout Standard
+M估计可以看作是对最小二乘估计的一种改善。它用一个函数
+\begin_inset Formula $\rho(x)$
+\end_inset
+
+来代替每个观测值与估计值的残差平方和
+\begin_inset Formula $x^{2}$
+\end_inset
+
+，此函数除了随|x|的增大速度比
+\begin_inset Formula $x^{2}$
+\end_inset
+
+慢外，其他性质与
+\begin_inset Formula $x^{2}$
+\end_inset
+
+类似。并且通过对
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}\rho(e_{i})}$
+\end_inset
+
+取极小而得到的。对于函数
+\begin_inset Formula $\rho$
+\end_inset
+
+和样本，M估计是使得目标函数
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\rho(e_{i})}}$
+\end_inset
+
+达到最小的估计。这便是M估计的想法。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho(x)$
+\end_inset
+
+是
+\begin_inset Formula $x$
+\end_inset
+
+的函数，它随
+\begin_inset Formula $x$
+\end_inset
+
+值的增大而增大，通常取
+\begin_inset Formula $\rho(x)=-lnf(x)$
+\end_inset
+
+，其中
+\begin_inset Formula $f(x)$
+\end_inset
+
+是
+\begin_inset Formula $x$
+\end_inset
+
+的分布密度函数。
+\begin_inset Formula $\rho(x)$
+\end_inset
+
+对取极小就相当于对
+\begin_inset Formula $x$
+\end_inset
+
+的似然函数的对数
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}lnf(x)}$
+\end_inset
+
+取极大。故M统计值就成为最大似然估计。若
+\begin_inset Formula $\rho(x)=x^{2}$
+\end_inset
+
+，M估计量等价于最小二乘估计量。
+\end_layout
+
+\begin_layout Standard
+为了消除测量单位对估计的影响，类似于传统的将数据标准化的做法，在M估计中用
+\begin_inset Formula $z_{i}=\frac{x_{i}}{s}$
+\end_inset
+
+来代替
+\begin_inset Formula $x{}_{i}$
+\end_inset
+
+。这里s是待估尺度（参数）（scale）。一般文献中推荐s值取误差绝对值的中位数：
+\begin_inset Formula $s=median\{|r_{i}|\}$
+\end_inset
+
+，有的文献将误差绝对值的中位数除以0.6745作为s的估计值，以使得在状态分布时s等于标准差。s值也可以由下式求出：
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}\chi(z_{i})}=0$
+\end_inset
+
+，其中
+\begin_inset Formula $\chi(z_{i})=z_{i}\psi(z_{i})-1$
+\end_inset
+
+。因为尺度s的稳健估计是另一个重要的稳健统计学问题。所以此文中将不详细讨论。
+\end_layout
+
+\begin_layout Standard
+令
+\begin_inset Formula $\rho$
+\end_inset
+
+关于
+\begin_inset Formula $\beta$
+\end_inset
+
+的导数为：
+\begin_inset Formula $\psi(z_{j})=\frac{\partial\rho(e_{i})}{\partial\beta_{j}}$
+\end_inset
+
+，则对原式子求导有，
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\psi(x_{i})x_{ij}}}=0,j=1,2,\cdots,m$
+\end_inset
+
+，解此联立方程就可以解出
+\begin_inset Formula $\beta$
+\end_inset
+
+的值。
+\end_layout
+
+\begin_layout Standard
+因为此方程较为复杂，要直接借出来比较困难，所以可以采用迭代法来求解。
+\end_layout
+
+\begin_layout Standard
+令
+\begin_inset Formula $w_{i}=\frac{\psi(e_{i})}{e_{i}}$
+\end_inset
+
+,则 原式可以转换为
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\psi(x_{i})x_{ij}}}=$
+\end_inset
+
+
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}e_{i}}w_{i}x_{ij}=$
+\end_inset
+
+
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}({\displaystyle y_{i}-\sum_{i=1}^{n}\beta_{i}x_{ij}})w_{i}x_{ij}=0}$
+\end_inset
+
+，所以有
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}{\displaystyle w_{i}x_{ij}y_{i}}=\sum_{i=1}^{n}\beta_{i}x_{ij}w_{i}x_{ij}}}$
+\end_inset
+
+，可以看出这是一个加权的最小二乘法。
+\end_layout
+
+\begin_layout Standard
+为了能与最小二乘法做比较，因而在M估计中常将最小二乘估计作为初值，即取
+\begin_inset Formula $\beta^{(0)}=\hat{\beta}$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+设
+\begin_inset Formula $\beta^{(l)}$
+\end_inset
+
+是第
+\begin_inset Formula $l$
+\end_inset
+
+次迭代值，其迭代公式为：
+\begin_inset Formula $\beta^{(l+1)}=\beta^{(l)}+\Delta\beta^{(l)},l=0,1,2,\text{·}\text{·}\text{·}$
+\end_inset
+
+，这里
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\Delta\beta^{(l)}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang chinese-simplified
+是增量。为求
+\begin_inset Formula $\Delta\beta^{(l)}$
+\end_inset
+
+好处假设
+\begin_inset Formula $\psi(x)$
+\end_inset
+
+在
+\begin_inset Formula $\beta^{(l)}$
+\end_inset
+
+处可以做泰勒展开，并取下面的近似表达式：
+\begin_inset Formula $\psi(e_{i})\approx\psi(e_{i}^{l})-{\displaystyle \sum_{j=1}^{m}\psi'(e_{i}^{l})x_{ij}\Delta\beta_{j}^{(l)}},i=1,2,3,\cdots,n$
+\end_inset
+
+其中，
+\begin_inset Formula ${\displaystyle e_{i}^{(l)}=y_{i}-\sum_{j=1}^{m}\beta_{i}^{(l)}x_{ij}}_{i}$
+\end_inset
+
+,将展开式代入方程组，可得:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\textstyle {\displaystyle \sum_{i=1}^{n}\psi(e_{i})x_{ij}}}={\textstyle {\displaystyle \sum_{i=1}^{n}(\psi(e_{i}^{l})-{\displaystyle \sum_{j=1}^{m}\psi'(e_{i}^{l})x_{ij}\Delta\beta_{j}^{(l)}})x_{ij}}},j=1,2,\cdots,m$
+\end_inset
+
+，上述方程租是关于
+\begin_inset Formula $\Delta\beta_{1}^{(l)},\Delta\beta_{2}^{(l)},\cdots,\Delta\beta_{m}^{(l)}$
+\end_inset
+
+的线性方程租。因而可以解出
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\Delta\beta^{(l)}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang chinese-simplified
+。为了让迭代不会无限循环，需要事前设定好收敛原则：事先确定一个非常小的
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+，要求
+\begin_inset Formula $\underset{j}{max}|\Delta\beta_{j}^{(l)}|<\varepsilon$
+\end_inset
+
+，便停止迭代。
+\end_layout
+
+\begin_layout Standard
+下面列出几种常用的
+\begin_inset Formula $\rho$
+\end_inset
+
+函数、
+\begin_inset Formula $\psi$
+\end_inset
+
+ 函数：
+\end_layout
+
+\begin_layout Enumerate
+Huber函数
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rho(x)=\begin{cases}
+\frac{1}{2}x^{2} & |x|\leq k\\
+k|x|-\frac{1}{2}k^{2} & |x|>k
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\psi(x)=\begin{cases}
+x & |x|\leq k\\
+k\text{·}sign(x) & |x|>k
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $w(x)=\begin{cases}
+1 & |x|\leq k\\
+\frac{k}{|x|} & |x|>k
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hampel三段截尾函数
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rho(x)=\begin{cases}
+\frac{1}{2}x^{2} & |x|\leq a\\
+k|x|-\frac{1}{2}a^{2} & a<|x|\leq b\\
+ab-\frac{1}{2}a^{2}+\left(c-b\right)\frac{a}{2}\left[1-\left(\frac{c-|x|}{c-b}\right)^{2}\right] & b<|x|\leq c\\
+ab-\frac{1}{2}a^{2}+\left(c-b\right)\frac{a}{2} & |x|>c
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\psi(x)=\begin{cases}
+x & |x|\leq a\\
+a\text{·}sign(x) & a<|x|\leq b\\
+a\text{·}\frac{c-|x|}{c-b}\text{·}sign(x) & b<|x|\leq c\\
+0 & |x|>c
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $w(x)=\begin{cases}
+1 & |x|\leq a\\
+\frac{a}{|x|} & a<|x|\leq b\\
+a\text{·}\frac{c-|x|}{c-b}\text{·}sign(x) & b<|x|\leq c\\
+0 & |x|>c
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tukey的双二次函数
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rho(x)=\begin{cases}
+\frac{1}{6}\left[1-\left(1-x^{2}\right)^{3}\right] & |x|\leq1\\
+\frac{1}{6} & |x|>1
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\psi(x)=\begin{cases}
+x\left(1-x^{2}\right)^{2} & |x|\leq1\\
+0 & |x|>1
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $w(x)=\begin{cases}
+\left(1-x^{2}\right)^{2} & |x|\leq1\\
+0 & |x|>1
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+数值模拟
+\end_layout
+
+\begin_layout Standard
+为了比较稳健估计和最小二乘法，本文随机生成了一些数据，然后分别用两种估计方法进行回归分析。
+\end_layout
+
+\begin_layout Standard
+本文首先随机选了n =10个x值，然后用
+\begin_inset Formula $y=3.5x+6+\varepsilon$
+\end_inset
+
+来生成10个对应的y值。再将最后的2个y值改成符合函数
+\begin_inset Formula $y=3.5x+12+\varepsilon$
+\end_inset
+
+的2个异常点。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<a>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n <-10;m <-2             
+\end_layout
+
+\begin_layout Plain Layout
+
+r <- rnorm(n,0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- runif(n,-10,50) 
+\end_layout
+
+\begin_layout Plain Layout
+
+beta1 <- 3.5
+\end_layout
+
+\begin_layout Plain Layout
+
+beta0 <- 6
+\end_layout
+
+\begin_layout Plain Layout
+
+betax <- 12
+\end_layout
+
+\begin_layout Plain Layout
+
+y    <- beta1*x    + beta0 +r      #  y=b0+b1*x
+\end_layout
+
+\begin_layout Plain Layout
+
+y[(n-m+1):n] <- betax*x[(n-m+1):n] + betax +r[(n-m+1):n] 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+为重复实验方便，我们保存了随机生成的x和y，下表是按升序排序后的x和y，其中第6点和第7点是异常点。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+y
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-4.282575
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-9.211033
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-3.251418
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-5.083544
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-2.722361
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-3.00885
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.576017
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+79.347572
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.518049
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+69.986128
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color red
+39.13665
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color red
+482.892625
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color red
+41.05978
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\color red
+503.99225
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+42.375578
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+152.674542
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+47.983068
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+173.75062
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48.655117
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+174.669358
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+然后进行回归分析和诊断，其中model_1即为最小二乘法回归。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<b>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-c(-4.282575,-3.251418,-2.722361,5.576017,18.518049,39.136650,41.059780,42.375578,47.98
+3068,48.655117)
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-c(-9.211033,-5.083544,-3.008850,79.347572,69.986128,482.892625,503.992250,152.674542,
+173.750620,174.669358) 
+\end_layout
+
+\begin_layout Plain Layout
+
+model_1 <- lm(y ~  x)
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(2,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(model_1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+左上的图为，Residual vs fittedji为拟合值
+\begin_inset Formula $\text{\hat{y}}$
+\end_inset
+
+对残差的图形, 可以看出, 除了6号点和7号点外，数据点都基本均匀地分布在直线
+\begin_inset Formula $y=0$
+\end_inset
+
+的两侧，无明显趋势;从右上角的Normal QQ-plot图，除了6号点和7号点外，可以看到数据点分布趋于一条直线, 说明如果没有一场点，残差是服从正态分布的;
+左下方的图Scale－Location 图显示了标准化残差(standardized residuals)的平方根的分布情况.
+ 号点和7号点为残差最大值点; 右下方的图显示了Cook距离(Cook's distance)，它表示各点对回归的影响点。通过作图和比较，我们可以基本确定，第6
+点和第7点是异常点。
+\end_layout
+
+\begin_layout Standard
+因此，我们用M估计对原数据进行回归。其中model_2为采用huber函数的稳健回归M估计，model_3为采用Hampel三段截尾函数的稳健回归M估计，mod
+el_4为采用Tukey的双二次函数的稳健回归M估计。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<c>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library("MASS")
+\end_layout
+
+\begin_layout Plain Layout
+
+model_2 <- rlm(y ~ x,psi=psi.huber)
+\end_layout
+
+\begin_layout Plain Layout
+
+model_3 <- rlm(y ~ x,psi=psi.hampel)
+\end_layout
+
+\begin_layout Plain Layout
+
+model_4 <- rlm(y ~ x,psi=psi.bisquare)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+下图即为数据的散点图和回归直线 。 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(y~x)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_1,col = "black",lty = "solid" )
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_2,col = "red",  lty = "dotted" )
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_3,col = "blue", lty = "dashed" )
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_4,col = "green",lty = "dotdash")
+\end_layout
+
+\begin_layout Plain Layout
+
+legend("topleft",c("OLS","huber","hampel","bisquare"),lty=c("solid","dotted","da
+shed","dotdash"),col=c("black","red","blue","green"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+从上图可以看出，由于异常点的出现，最小二乘法显然为照顾异常点，与预期有所偏离。而稳健回归却很好地削弱了异常点的影响，但选择不同的
+\begin_inset Formula $\psi$
+\end_inset
+
+函数，对异常点的削弱情况也不同。在本例中，采用Hampel 函数的 M估计，几乎没有削弱异常点的影响，其回归线与最小二乘法的回归线很靠近；而采用bisquare
+函数的 M估计几乎完全消除了异常点的影响，其与去掉异常点的最小二乘法差不多；而采用huber函数的M估计则兼顾了所有点的影响。它们回归得拟合直线系数汇总如下图所
+示（其中RSE为Residual standard error）：
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{se(\beta_{0})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{se(\beta_{1})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OLS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.303
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66.685
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.409
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.780
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.099
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.754
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.409 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4866
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huber
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.9676
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30.9381
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 0.6454
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.1171
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9738
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.2278
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57.96
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hampel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.3032
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66.6853
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4094
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.7798 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0990
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.7536
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+136.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bisquare
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 6.0185
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3788
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.8877
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.4728
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0119
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+291.2480
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7013
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+实际数据
+\end_layout
+
+\begin_layout Standard
+本文在实际数据中比较稳健估计和最小二乘法，在此选择的数据是Forbes数据。
+\end_layout
+
+\begin_layout Standard
+在19世纪四五十年代，苏格兰物理学家James D.Forbes试图通过水的沸点来估计海拔高度。他在阿尔卑斯山及苏格兰手机数据。R语言的MASS包选取了他1857
+年的论文中的17个数据，本文选用的就是这个数据，然后用最小二乘法来分析原是数据，其中model_1即为最小二乘法回归。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS)
+\end_layout
+
+\begin_layout Plain Layout
+
+F <- forbes$bp
+\end_layout
+
+\begin_layout Plain Layout
+
+h <- forbes$pres
+\end_layout
+
+\begin_layout Plain Layout
+
+myforbes <- data.frame(F =F ,h = h, logh=log(h) ,log100h =100*log(h))
+\end_layout
+
+\begin_layout Plain Layout
+
+model_1 <-  lm(formula = log100h ~ F,  data = myforbes)
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow=c(2,2))
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(model_1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+从图上可以较明显地，原数据的第12点应为异常点。
+\end_layout
+
+\begin_layout Standard
+因此，我们用M估计对原数据进行回归。其中model_2为采用huber函数的稳健回归，model_3为采用Hampel三段截尾函数的稳健回归，model_2为采
+用Tukey的双二次函数的稳健回归。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(log100h ~ F, data = myforbes)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_1,col = "black")
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_2,col = "red",  lty = "dotted" )
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_3,col = "blue", lty = "dashed" )
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(model_4,col = "green",lty = "dotdash")
+\end_layout
+
+\begin_layout Plain Layout
+
+legend("right",,c("OLS","huber","hampel","bisquare"),lty=c("solid","dotted","das
+hed","dotdash"),col=c("black","red","blue","green"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+从上图可以看出，由于异常点的出现，最小二乘法显然为照顾异常点，与预期有所偏离。而稳健回归却很好地削弱了异常点的影响，但选择不同的
+\begin_inset Formula $\psi$
+\end_inset
+
+函数，对异常点的削弱情况也不同。在本例中，采用Hampel 函数的 我估计，几乎没有削弱异常点的影响，其回归线与最小二乘法的回归线很靠近；而采用bisquare
+函数的 M估计几乎完全消除了异常点的影响，其与去掉异常点的最小二乘法差不多；而采用huber函数的M估计则兼顾了所有点的影响。它们回归得拟合直线系数汇总如下图所
+示（其中RSE为Residual standard error）：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{se(\beta_{0})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{se(\beta_{1})}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+t value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OLS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-97.08662
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.69377
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-12.62
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.06224
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.03789 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+54.42
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.409 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.996
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huber
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-95.4058
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.7701
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-34.4418
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0532 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0136
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150.4864
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2999
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hampel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-95.1766
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3846
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-39.9138
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0519 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0117
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+174.7026
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2858
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bisquare
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-95.1816
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.5214
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-37.7490
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0519
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0124
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+165.2250
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2812
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+上图可以看出，虽然有异常点的存在，但由于异常点的影响较小，采用M估计得到回归系数与最小二乘法得到回归系数差不多。但采用M估计得到的回归系数的显著性却比用最小二乘
+法得到回归系数有显著提升。
+\end_layout
+
+\begin_layout Section
+总计
+\end_layout
+
+\begin_layout Standard
+从上面的分析我们可以看出，由于异常点的存在，最小二乘法在处理这些数据时，会受到不同程度的影响。最小二乘法要剔除这些异常点，需要进行比较回归诊断，而且在实际情况中
+，不一定允许剔除数据。而进行稳健回归时，我们不需检测或剔除异常点，便可得到比较理想的结果。而且，如果异常点较多或影响较大，最小二乘法的结果很能令人满意，而稳健回
+归却能得到合适的结果。而且，即使异常点的影响很小，使用稳健回归能提高回归系数的显著性。在实际数据中，根据情况采用适当形式的稳健回归是很有必要的。
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Huber, P.
+ J.
+ (2011).
+ Robust statistics (pp.
+ 1248-1251).
+ Springer Berlin Heidelberg.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Fox, J.
+ (2002).
+ An R and S-Plus companion to applied regression.
+ Sage.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+王谷, & 过秀成.
+ (2011).
+ 包含异常数据的居民出行稳健回归分析.
+ 武汉理工大学学报 (交通科学与工程版), 3, 019.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+孙士兵, 赵欢, & 贺宗梅.
+ (2008).
+ 基于稳健回归技术的软件成本估计方法.
+ 科学技术与工程, 8(17), 4864-4868.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+
+\end_inset
+
+郭亚帆, & 杜金柱.
+ (2010).
+ 经典回归与稳健回归方法的应用比较研究.
+ 市场研究, (009), 17-21.
+\end_layout
+
+\end_body
+\end_document

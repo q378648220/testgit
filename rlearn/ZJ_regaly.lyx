@@ -1,0 +1,247 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% please do NOT remove these lines!
+% set file encoding for WinEdt
+% !Mode:: "TeX:UTF-8"
+% set typesetting program for TeXworks
+% !TEX program = XeLaTeX
+
+\usepackage[CJKtextspaces,CJKnumber]{xeCJK}                                      
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKsansfont{SimHei}         
+\setCJKmonofont{NSimSun}  
+
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "LyTeX"
+\pdf_author "Jiangbing"
+\pdf_subject "latex"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=false"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+回归分析的简单总结
+\end_layout
+
+\begin_layout Author
+蒋冰
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+学号：201322130002
+\end_layout
+
+\begin_layout Section*
+Lec0
+\end_layout
+
+\begin_layout Standard
+回归线（一元回归）
+\end_layout
+
+\begin_layout Standard
+回归名称的由来：子代的身高邮箱族群病菌升高“回归”的趋势
+\end_layout
+
+\begin_layout Section*
+Lec1
+\end_layout
+
+\begin_layout Standard
+ordinary line: 
+\begin_inset Formula $y-\bar{y}=x-\bar{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+SD line: 
+\begin_inset Formula $y-\hat{y}=\frac{SD_{y}}{SD_{x}}(x-\bar{x})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+regression line: 
+\begin_inset Formula $y-\bar{y}=\hat{\beta_{1}}(x-\bar{x})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+回归线较SD线（虚线）更平坦（注：
+\begin_inset Formula $\hat{\beta_{1}=r\cdot\frac{SD_{y}}{SD_{x}}}$
+\end_inset
+
+）
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename fuxi/2013-12-31_130334.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+lec 2
+\end_layout
+
+\begin_layout Standard
+Pearson相关系数
+\begin_inset Formula $r=\frac{{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}\sum_{i=1}^{n}(y_{i}-\bar{y})^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+最小二乘法统一表达：
+\end_layout
+
+\begin_layout Standard
+残差平方和RSS（Residual sum of squares）：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $RSS(\beta_{0},\beta_{1})={\displaystyle \sum_{i=1}^{n}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+最小二乘法：即选择参数使得RSS最小：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(\hat{\beta_{0}},\hat{\beta_{1}})=argmin\limits _{(\beta_{0},\beta_{1})\epsilon R^{2}}RSS(\beta_{0},\beta_{1})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+最小二乘估计
+\end_layout
+
+\begin_layout Standard
+残差平方和RSS分别对
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+和
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+QQ骗到，得到含两个参数的两个方程。
+\end_layout
+
+\begin_layout Standard
+解为最小二乘法（LSE）：
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $SXX={\displaystyle \sum_{i=1}^{n}}(x_{i}-\bar{x})^{2}={\displaystyle \sum_{i=1}^{n}x_{i}^{2}-n(\bar{x})^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $SXY={\displaystyle \sum_{i=1}^{n}}(x_{i}-\bar{x})(y_{i}-\bar{y})={\displaystyle \sum_{i=1}^{n}}x_{i}y_{i}-n\bar{x}\bar{y}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,573 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% please do NOT remove these lines!
+% set file encoding for WinEdt
+% !Mode:: "TeX:UTF-8"
+% set typesetting program for TeXworks
+% !TEX program = XeLaTeX
+
+\usepackage[CJKtextspaces,CJKnumber]{xeCJK}                                      
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKsansfont{SimHei}         
+\setCJKmonofont{NSimSun}  
+
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "LyTeX"
+\pdf_author "Jiangbing"
+\pdf_subject "latex"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=false"
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+生物统计
+\end_layout
+
+\begin_layout Author
+蒋冰
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+学号：201322130002
+\end_layout
+
+\begin_layout Section
+模型和方法
+\end_layout
+
+\begin_layout Subsection
+生存分析
+\end_layout
+
+\begin_layout Standard
+生存分析（survival analysis）也称之为风险模型（hazard model）或持续模型（duration model）,是一种根据实验或调查数据,
+对生物、人以及具有类似于生存规律的其它事物的生存时间进行分析和推断的统计方法。目前生存分析已广泛应用于生物统计、医学、金融和工业工程等多个领域,近年来也逐渐被运
+用到城市交通领域的研究中。比如用来研究交通事故的清理时间[13鄄14],基于活动的出行行为[15鄄16],机动车持有时间及报废时间[17鄄18],城市道路混合交
+通行为[19鄄20],航班的延误时间[21],高速公路危险区域交通冲突发生的风险率[22]等.。
+\end_layout
+
+\begin_layout Standard
+广义的生存时间指生物体存活的时间,或所关心的某种现象的持续时间。道路拥堵持续时间是指从交通拥堵现象产生开始,一直到拥堵结束为止的持续时间,属于广义生存时间范畴，
+可运用生存分析方法来对其进行研究。 令T代表生存的时间（ 寿命）,它是一个非负的随机变量,令
+\begin_inset Formula $f(t)$
+\end_inset
+
+表示T的概率密度函数，P 代表概率，T 的分布函数为
+\begin_inset Formula $F(t)=P(T\leqslant t)=\int_{0}^{t}f(x)dx$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+生存函数S(t)，也叫生存率，表示生存时间大于t的概率，它的表达式为
+\begin_inset Formula $S(t)=P(T>t)=1-F(t)=\int_{t}^{\infty}f(x)dx$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+生存分析中，T可以用危险率函数h(t)来描述。危险率函数也叫条件生存率，它指病人从患病起持续了t时间后没有结束，但在接下来的一段很小的时间
+\begin_inset Formula $\Delta t$
+\end_inset
+
+内结束的概率，可表示为
+\begin_inset Formula $h(t)={\displaystyle \lim_{\Delta t\rightarrow\infty}\frac{P(t\leqslant T<t+\Delta t|T\geqslant t)}{\Delta t}}=\frac{f(t)}{S(t)}=\frac{-dlnS(t)}{dt}$
+\end_inset
+
+。它表示死亡速率的大小。如以t为横坐,f(t)为纵坐标作出的曲线称为密度曲线,由曲线上可看出不同时间的死亡速率及死亡高峰时间。纵坐标越大,其死亡速率越高,如曲线
+呈现单调下降,则死亡速率越来越小,如呈现峰值,则为死亡高峰。 
+\end_layout
+
+\begin_layout Subsection
+估计生存函数的非参数方法
+\end_layout
+
+\begin_layout Standard
+估计生存函数的方法主要有参数方法和非参数方法两种。但当分布类型未知时,非参数方 法的效率更高。由于当前并不知道****服从何种参数分布,因此,本文运用非参数方法
+来估计拥堵持续时间的生存函数.。乘积限方法是最常用的非参数估计方法，以***的持续时间为研究对象，假定共有n个拥堵持续时间样本,，这些样本的拥堵持续时间共有k()
+ 个不同的取值,由于没有删失数据,直接将它们从小到大排序t1 < t2 < … < tk .
+ 令dj 为tj 这一单位时段内拥堵结束的样本数,nj 为时刻tj 之前仍拥堵的样本数.
+ 生存函数S(t) 的乘 积限估计可用下式表示，(4)这里的j是满足不等式tjt的任何值,估计量S(t)是由数项乘积构成,乘积中的每一项(nj-dj)/nj为t
+j时段的生存概率,它指的是在时刻tj之前拥堵没有结束的样本(nj 个) 中,在tj 之后 拥堵仍没有结束((nj - dj ) 个)的比例.
+\end_layout
+
+\begin_layout Subsection
+比较多个生存分布的非参数方法
+\end_layout
+
+\begin_layout Standard
+一般而言，不同时间和空间的道路拥堵持续时间会有所差异。许多非参数检验方法都可以用来比较多个生存分布,本文以应用广泛的Cox-Mantel方法来检验*******
+****持续时间生存函数分布的差异性。以比较两个不同断面的拥堵持续时间分布是否一致为例，假设1 和2表示不同的道路断面，x1，x2，…，xn1是断面1的n1个拥
+堵持续时间样本，y1，y2，…，yn2是断面2的n2个拥堵持续时间样本。 假设**和**2的观测值分别是来自生存函数为
+\begin_inset Formula $S_{1}(t)$
+\end_inset
+
+和
+\begin_inset Formula $S_{2}(t)$
+\end_inset
+
+的样本，其原假设和备择假设分别是
+\begin_inset Formula $H_{0}$
+\end_inset
+
+：
+\begin_inset Formula $S_{1}(t)=S_{2}(t)$
+\end_inset
+
+（断面1和断面2的分布一致）
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H_{1}$
+\end_inset
+
+：
+\begin_inset Formula $S_{1}(t)\neq S_{2}(t)$
+\end_inset
+
+（断面1和断面2的分布不同）
+\end_layout
+
+\begin_layout Standard
+设
+\begin_inset Formula $t_{(1)}<t_{(2)}<…<t_{(k)}$
+\end_inset
+
+ 是两组合在一起后不相同的死亡时间，
+\begin_inset Formula $m_{(i)}$
+\end_inset
+
+是死亡时间等于
+\begin_inset Formula $t_{(i)}$
+\end_inset
+
+的个数，即
+\begin_inset Formula $t_{(i)}$
+\end_inset
+
+的重复次数。因此
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{k}m_{(i)}}=n_{1}+n_{2}$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+设R(t)是时间t的风险集，即死亡时间或删失时间至少是t的所有个体组成之集合。设
+\begin_inset Formula $n_{1t}$
+\end_inset
+
+ 和
+\begin_inset Formula $n_{2t}$
+\end_inset
+
+分别是R(t) 中对应于处理组1 和处理组2 的个体数。 在
+\begin_inset Formula $R(t_{(i)})$
+\end_inset
+
+中的个体数是
+\begin_inset Formula $r(i)=n_{1t(i)}+n_{2t(i)}$
+\end_inset
+
+， 令
+\begin_inset Formula $U=n_{2}-$
+\end_inset
+
+， (6) 摇 摇 I =移 k i = 1 m(i)(r(i) - m(i) ) r(i) - 1 A(i)(1 - A(i) )， (7)
+ 这里 A(i) 是 R(t(i) ) 中属于第2 组的个体所占的比例，令 摇 摇 C = U/ I 。 (8) 可以证明 C近似服从标准正态分布。
+ 因此若 Z > Z1 -琢/ 2，则拒绝原假设，认为断面1 和断 面2 的分布不一致，两者有显著差异。
+\end_layout
+
+\begin_layout Section
+数据和样本提取
+\end_layout
+
+\begin_layout Standard
+数据来源于 A randomized trial of vitamin A and vitamin E supplementation for
+ retinitis pigmentosa
+\end_layout
+
+\begin_layout Standard
+本文的数据提取自一个眼科学的临床实验，其主要目的是检验给视网膜炎着色的病人补充不同的维生素A用以预防病人实力损失。视力损失由视网膜功能损失所测定，它是由仪器ER
+G（电子视网膜成像仪）上30Hz上的振幅减少50%以上表征。对正常人，ERG 30Hz的振幅范围是>50 μV（微伏）。而在有视网膜炎着色的病人上，ERG
+ 30Hz的振幅范围通常<10μV，及常<1μV。约有50%的病人在ERG 30Hz上的振幅接近0.05μV时就失明，不到10%的病人EFG 30Hz振幅解决1.3
+μV（这是这次临床试验中病人的平均ERG振幅）。这次临床实验中病人被随机分到4个处理组之一。
+\end_layout
+
+\begin_layout Standard
+组1：接受15000IU（痕量）的维生素A及3IU的维生素E。
+\end_layout
+
+\begin_layout Standard
+组2：接受75IU（痕量）的维生素A及3IU的维生素E。
+\end_layout
+
+\begin_layout Standard
+组3：接受15000IU（痕量）的维生素A及400IU的维生素E。
+\end_layout
+
+\begin_layout Standard
+组4：接受75IU（痕量）的维生素A及400IU的维生素E。
+\end_layout
+
+\begin_layout Standard
+为方便阐述，有把上面4组改称为A组、对照组、AE组和E组。我们要比较不同组中病人治疗失败的比例（“失败”是值ERG 的30Hz振幅损失50%）。病人取自1984
+年至1987年的记录，且跟踪到1991年9月。因为追踪停止实在同一个时刻终止的，故而不同病人的跟踪时间长度各不相同。早登记的病人可以跟踪达6年，而记录较晚的病人
+则只有4年。另外，有些病人有些病人在追踪挺值钱就推出研究了在追踪挺值钱就推出研究了，而这些人却又未曾“失败”。把由于死亡，其他疾病、可能的药物副作用，或不愿意继
+续下去等称为“退出”者。
+\end_layout
+
+\begin_layout Section
+实证分析
+\end_layout
+
+\begin_layout Subsection
+截尾数据的生存函数和危险率的估
+\end_layout
+
+\begin_layout Standard
+为方便阐述，有把上面4组改称为A组、对照组、AE组和E组。我们要比较不同组中病人治疗失败的比例（“失败”是值ERG 的30Hz振幅损失50%）。
+\end_layout
+
+\begin_layout Section
+实证分析
+\end_layout
+
+\begin_layout Subsection
+乘积极限法(Product-Limit Method)
+\end_layout
+
+\begin_layout Standard
+乘积极限法又称为积限法或PL法,它是由统计学家Kaplan和Meier于1958年首先提出的, 因此又称为Kaplan-Meier法,它是一种利用条件概率及概率
+的乘法原理计算生存率及其标准误的方法。
+\end_layout
+
+\begin_layout Standard
+设S(t)表示t年的生存率,
+\begin_inset Formula $S(t_{i}|t_{i-1})$
+\end_inset
+
+表示活过
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+年后再活过
+\begin_inset Formula $t_{i}$
+\end_inset
+
+年的条件概率。根据条件概率的性质有
+\begin_inset Formula $S(t_{2})=S(t_{1})S(t_{i}|t_{i-1})$
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+病人取自1984年至1987年的记录，并跟踪到1991年9月。因为追踪停止是在同一个时刻终止的，故而不同病人的跟踪时间长度各不相同。早等级的病人可以跟踪6年，而
+记录较晚的病人则只有4年。另外，有些病人在1991年9越以前就推出研究了，而这些人却又未曾“失败”。“退出”者是由于死亡，其他疾病，可能的药物副作用，或个人原因
+不愿意继续下去。我们把这些在随访蒸汽内未到达疾病终点的病人的数据称为失访或截尾观察（censored observation）。
+\end_layout
+
+\begin_layout Standard
+设
+\begin_inset Formula $S_{i-1}$
+\end_inset
+
+是个体存活到
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+时没有失访的人数，设在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时仍存活
+\begin_inset Formula $S_{i}$
+\end_inset
+
+人，失败
+\begin_inset Formula $d_{i}$
+\end_inset
+
+人，失访
+\begin_inset Formula $l_{i}$
+\end_inset
+
+人，于是有
+\begin_inset Formula $S_{i-1}=S_{i}+d_{i}+l_{i}$
+\end_inset
+
+，因此可以估计
+\begin_inset Formula $t_{i-1}$
+\end_inset
+
+时的存活着到时刻
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时的生存概率为
+\begin_inset Formula $1-\frac{d_{i}}{S_{i-1}}=1-\frac{d_{i}}{S_{i}+d_{i}+l_{i}}$
+\end_inset
+
+，
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时的失访者在
+\begin_inset Formula $t>t_{i}$
+\end_inset
+
+是不会对生存函数构成影响。所以在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+上的生存概率
+\begin_inset Formula $S(t_{i})$
+\end_inset
+
+的Kaplan-Meier估计量公式为：
+\begin_inset Formula $\hat{S}(t_{i})=\left(1-\frac{d_{1}}{S_{0}}\right)\left(1-\frac{d_{2}}{S_{1}}\right)\cdots\left(1-\frac{d_{i}}{S_{i-1}}\right)$
+\end_inset
+
+，
+\begin_inset Formula $i=1,2,\cdots,k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+在引入
+\begin_inset Formula $Var\{ln[\hat{S}(t)]\}={\displaystyle \sum_{j=1}^{i}\frac{d_{j}}{S_{j-1}(S_{j-1}-d_{j})}}$
+\end_inset
+
+，于是可以解得在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+上的生存概率
+\begin_inset Formula $S(t_{i})$
+\end_inset
+
+的双侧100%×(1-α)CI即为
+\begin_inset Formula $(e^{c_{L}},e^{c_{R}})$
+\end_inset
+
+，则
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c_{L}=ln[\hat{S}(t_{i})-z_{1-\frac{\alpha}{2}}se\{ln[\hat{S}(t_{i})]\}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c_{R}=ln[\hat{S}(t_{i})+z_{1-\frac{\alpha}{2}}se\{ln[\hat{S}(t_{i})]\}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+一般地，在
+\begin_inset Formula $t_{i}$
+\end_inset
+
+时危险率为
+\begin_inset Formula $\hat{h}(t_{i})=\frac{d_{i}}{S_{i-1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+对数-秩检验
+\end_layout
+
+\begin_layout Subsection
+Wilcoxon检验
+\end_layout
+
+\begin_layout Subsection
+Likelihood ration(LR)检验
+\end_layout
+
+\begin_layout Subsection
+比较危险率模型(Proportaional-Hazards Model)
+\end_layout
+
+\begin_layout Standard
+在比较危险率模型中，危险率可以表示成
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h(t)=h_{0}(t)exp(\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中
+\begin_inset Formula $x_{1},x_{2},\cdots,x_{k}$
+\end_inset
+
+是一组独立变量，而
+\begin_inset Formula $h_{0}(t)$
+\end_inset
+
+是在基准状态下在t时刻上的基准危险率，它代表所有独立变量全取值0是的危险率。做出零假设为
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+：
+\begin_inset Formula $\beta_{j}=0$
+\end_inset
+
+，备择假设为
+\begin_inset Formula $H_{j1}$
+\end_inset
+
+：
+\begin_inset Formula $\beta_{j}\neq0$
+\end_inset
+
+，计算检验统计量
+\begin_inset Formula $z=\frac{\hat{\beta_{j}}}{se(\hat{\beta_{j}})}$
+\end_inset
+
+，当显著性水平为
+\begin_inset Formula $\alpha$
+\end_inset
+
+时，当
+\begin_inset Formula $z<z_{\frac{\alpha}{2}}$
+\end_inset
+
+或
+\begin_inset Formula $z>z_{1-\frac{\alpha}{2}}$
+\end_inset
+
+时，则拒绝
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+；若
+\begin_inset Formula $z_{\frac{\alpha}{2}}\leqslant z\leqslant z_{1-\frac{\alpha}{2}}$
+\end_inset
+
+，则接受
+\begin_inset Formula $H_{j0}$
+\end_inset
+
+。 
+\end_layout
+
+\begin_layout Standard
+比例危险率模型可以写成
+\begin_inset Formula $ln\left[\frac{h(t)}{h_{0}(t)}\right]=\beta_{1}x_{1}+\beta_{2}x_{2}+\cdots+\beta_{k}x_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+总体分析
+\end_layout
+
+\begin_layout Section
+结论
+\end_layout
+
+\end_body
+\end_document
